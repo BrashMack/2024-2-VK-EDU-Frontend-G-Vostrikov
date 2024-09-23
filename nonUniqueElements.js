@@ -25,6 +25,6 @@ nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
  */
 
 export default function nonUniqueElements(data) {
-  // your solution goes here
-  return data
+  const non_uniq = data.filter((element, index, array) => array.indexOf(element) !== index);
+  return data.filter(element => non_uniq.includes(element));
 }

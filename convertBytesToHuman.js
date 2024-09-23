@@ -18,5 +18,14 @@
  */
 
 export default function convertBytesToHuman(bytes) {
-  // your solution goes here
+  if (typeof (bytes) != 'number' || bytes < 0 || !Number.isInteger(bytes)) return false;
+  else {
+    const measure = ['B', 'KB', 'MB', 'GB', 'TB'];
+    for (let i = 0; i < 5; ++i) {
+      if (bytes < 1024) {
+        return `${Number.isInteger(bytes) ? bytes : bytes.toFixed(2).replace(/0+$/, '')} ${measure[i]}`
+      }
+      bytes /= 1024;
+    }
+  }
 }
