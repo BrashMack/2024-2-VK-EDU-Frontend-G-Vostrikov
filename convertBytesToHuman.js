@@ -18,14 +18,16 @@
  */
 
 export default function convertBytesToHuman(bytes) {
-  if (typeof (bytes) != 'number' || bytes < 0 || !Number.isInteger(bytes)) return false;
-  else {
-    const measure = ['B', 'KB', 'MB', 'GB', 'TB'];
-    for (let i = 0; i < 5; ++i) {
-      if (bytes < 1024) {
-        return `${Number.isInteger(bytes) ? bytes : bytes.toFixed(2).replace(/0+$/, '')} ${measure[i]}`
-      }
-      bytes /= 1024;
+  if (typeof (bytes) !== 'number' || bytes < 0) {
+    return false
+  };
+  const measure = ['B', 'KB', 'MB', 'GB', 'TB', 'PB'];
+  let i;
+  for (i = 0; i < 6; ++i) {
+    if (bytes < 1024) {
+      break;
     }
+    bytes /= 1024;
   }
+  return `${Number.isInteger(bytes) ? bytes : parseFloat(bytes.toFixed(2))} ${measure[i]}`;
 }

@@ -18,6 +18,10 @@ correctSentence("Greetings, friends.") == "Greetings, friends."
  */
 
 export default function correctSentence(text) {
-  // your solution goes here
-  return `${text.charAt(0).toUpperCase()}${text.slice(1)}${text[text.length - 1] == '.' ? '' : '.'}`;
+  if (typeof (text) !== 'string') return "It's not a string!"
+  if (text === '' || !/[a-zA-Z]/.test(text[0])) return "Bad string!"
+  const firstLetter = text[0].toUpperCase();
+  const restOfText = text.slice(1);
+  const hasPeriod = text[text.length - 1] === '.';
+  return `${firstLetter}${restOfText}${hasPeriod ? '' : '.'}`;
 }
