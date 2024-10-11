@@ -20,7 +20,7 @@
     z-index: 1;
 }
 
-.chat-header img {
+.chat-header .avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -28,7 +28,7 @@
     margin-left: 10px;
 }
 
-.chat-header h2 {
+.user-block .username {
     margin: 0;
 }
 
@@ -38,12 +38,12 @@
     margin-left: auto;
 }
 
-.chat-header .header-right i {
+.chat-header .header-right .icons {
     font-size: 25px;
     margin: 0 10px;
 }
 
-.username {
+.user-block {
     display: flex;
     flex-direction: column;
 }
@@ -125,14 +125,14 @@
     z-index: 1;
 }
 
-.chat-footer input {
+.chat-footer .form-input {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.chat-footer input:focus {
+.chat-footer .form-input:focus {
     outline-color: #818181;
 }
 

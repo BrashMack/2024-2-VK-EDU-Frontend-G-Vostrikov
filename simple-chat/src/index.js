@@ -5,11 +5,25 @@ const form = document.querySelector('form');
 const input = document.querySelector('.form-input');
 const chatBody = document.querySelector('.chat-body');
 const sendButton = document.querySelector('.submit');
-let messages = JSON.parse(localStorage.getItem('messages')) || [];
+let messages = [];
+loadMessages();
+
+function loadMessages() {
+    for (let i = 1; i <= localStorage.length; ++i) {
+        let message = JSON.parse(localStorage.getItem(`message${i}`));
+        if (message) {
+            messages.push(message);
+        }
+    }
+}
 
 function hhMM() {
     return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
+
+messages.forEach((message) => {
+    addMessage(message.text, message.time, message.isUser, message.img);
+});
 
 function addMessage(message, time, isUser, img) {
     const messageElement = document.createElement('div');
@@ -53,28 +67,26 @@ function addMessage(message, time, isUser, img) {
     chatBody.scrollTop = chatBody.scrollHeight;
 }
 
-messages.forEach(message => {
-    addMessage(message.text, message.time, message.isUser, message.img);
-});
+form.addEventListener('submit', handleSubmit);
 
-form.addEventListener('submit', (event) => {
+function handleSubmit(event) {
     event.preventDefault();
     const messageText = input.value.trim();
 
     if (messageText) {
         messages.push({ text: messageText, time: hhMM(), isUser: true, img: "" });
-        localStorage.setItem('messages', JSON.stringify(messages));
+        localStorage.setItem(`message${localStorage.length + 1}`, JSON.stringify(messages[messages.length - 1]));
         input.value = '';
         addMessage(messageText, hhMM(), true, "");
     }
-});
+};
 
 input.addEventListener('keyup', (event) => {
     if (event.key === 'Enter') {
-        form.dispatchEvent(new Event('submit'));
+        handleSubmit(event);
     }
 });
 
-sendButton.addEventListener('mouseup', () => {
-    form.dispatchEvent(new Event('submit'));
+sendButton.addEventListener('mouseup', (event) => {
+    handleSubmit(event);
 });
