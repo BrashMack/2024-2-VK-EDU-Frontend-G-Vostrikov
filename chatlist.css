@@ -15,7 +15,8 @@
 .header {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: #9e63e9;
     color: white;
     position: sticky;
