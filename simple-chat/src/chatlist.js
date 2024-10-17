@@ -2,7 +2,7 @@ import './chatlist.css';
 import './chats.js';
 
 const burger = document.querySelector('.burger');
-const header = document.querySelector('.header');
+const lines = document.querySelectorAll('.burger-line');
 const chatList = document.querySelector('.chat-list');
 
 document.addEventListener('DOMContentLoaded', function loadChats() {
@@ -73,9 +73,8 @@ function addChat(user, avatar, message, time, status) {
     chatList.scrollTop = chatList.scrollHeight;
 }
 
-burger.addEventListener('click', () => {
-  burger.classList.toggle('active');
-  header.classList.toggle('active');
+burger.addEventListener('click', function toggleBurger() {
+    lines.forEach((line) => line.classList.toggle('active'));
 });
 
 const createChatButton = document.querySelector('.create-chat');
