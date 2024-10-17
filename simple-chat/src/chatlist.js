@@ -4,9 +4,9 @@ import './chats.js';
 const burger = document.querySelector('.burger');
 const header = document.querySelector('.header');
 const chatList = document.querySelector('.chat-list');
-let chats = [];
 
 document.addEventListener('DOMContentLoaded', function loadChats() {
+    let chats = [];
     for (let i = 1; i <= localStorage.length; ++i) {
         let chat = JSON.parse(localStorage.getItem(`chat${i}`));
         if (chat) {
@@ -32,8 +32,10 @@ function addChat(user, avatar, message, time, status) {
     const userBlock = document.createElement('div');
     userBlock.classList.add('user-block');
     const chatName = document.createElement('h3');
+    chatName.classList.add('chat-name');
     chatName.textContent = user;
     const lastMessage = document.createElement('p');
+    lastMessage.classList.add('last-msg');
     lastMessage.textContent = message;
     userBlock.appendChild(chatName);
     userBlock.appendChild(lastMessage);
