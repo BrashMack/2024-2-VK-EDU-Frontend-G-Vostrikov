@@ -5,25 +5,24 @@ const form = document.querySelector('form');
 const input = document.querySelector('.form-input');
 const chatBody = document.querySelector('.chat-body');
 const sendButton = document.querySelector('.submit');
+let chatId = 1;
 let messages = [];
-loadMessages();
 
-function loadMessages() {
+document.addEventListener('DOMContentLoaded', function loadMessages() {
     for (let i = 1; i <= localStorage.length; ++i) {
         let message = JSON.parse(localStorage.getItem(`message${i}`));
         if (message) {
             messages.push(message);
         }
     }
-}
+    messages.forEach((message) => {
+    addMessage(message.text, message.time, message.isUser, message.img);
+    });
+});
 
 function hhMM() {
     return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
-
-messages.forEach((message) => {
-    addMessage(message.text, message.time, message.isUser, message.img);
-});
 
 function addMessage(message, time, isUser, img) {
     const messageElement = document.createElement('div');
@@ -78,6 +77,8 @@ function handleSubmit(event) {
         localStorage.setItem(`message${localStorage.length + 1}`, JSON.stringify(messages[messages.length - 1]));
         input.value = '';
         addMessage(messageText, hhMM(), true, "");
+
+        updateLastMessage(messageText, hhMM());
     }
 };
 
@@ -90,3 +91,11 @@ input.addEventListener('keyup', (event) => {
 sendButton.addEventListener('mouseup', (event) => {
     handleSubmit(event);
 });
+
+function updateLastMessage(text, time) {
+    const chat = JSON.parse(localStorage.getItem(`chat${chatId}`));
+    chat.message = text;
+    chat.time = time;
+    chat.status = 'sent';
+    localStorage.setItem(`chat${chatId}`, JSON.stringify(chat));
+}

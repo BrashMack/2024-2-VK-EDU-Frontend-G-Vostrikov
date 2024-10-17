@@ -5,20 +5,18 @@ const burger = document.querySelector('.burger');
 const header = document.querySelector('.header');
 const chatList = document.querySelector('.chat-list');
 let chats = [];
-loadChats();
 
-function loadChats() {
+document.addEventListener('DOMContentLoaded', function loadChats() {
     for (let i = 1; i <= localStorage.length; ++i) {
         let chat = JSON.parse(localStorage.getItem(`chat${i}`));
         if (chat) {
             chats.push(chat);
         }
     }
-}
-
-chats.forEach((chat) => {
+    chats.forEach((chat) => {
     addChat(chat.user, chat.avatar, chat.message, chat.time, chat.status.split(' '));
-});
+    });
+});   
 
 function addChat(user, avatar, message, time, status) {
     const chatElement = document.createElement('div');
