@@ -1,0 +1,156 @@
+.container {
+    font-size: 15px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #9e63e9;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.burger {
+    margin-left: 10px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: transform 0.2s ease;
+}
+
+.burger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.app {
+    margin-left: 20px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.chat-list {
+    padding: 20px;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.chat-item:last-child {
+    border-bottom: none;
+}
+
+.chat-item .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.chat-item h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.chat-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+}
+
+.time-block {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.time {
+    margin-left: auto;
+    font-size: 12px;
+    color: #888;
+}
+
+.unread {
+    background-color: #673AB7;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.delivered {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #673AB7;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.create-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #673AB7;
+    border-radius: 50%;
+    border: none;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.create-chat:hover {
+    transform: translateY(-5px);
+}
+
+.create-chat svg {
+    width: 24px;
+    height: 24px;
+}

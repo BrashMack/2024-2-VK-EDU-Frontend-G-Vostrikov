@@ -179,9 +179,13 @@
 .material-symbols-outlined.attach:hover {
     color: #818181;
     cursor: pointer;
+    transition: transform 0.2s ease;
+    transform: translateY(-3px);
 }
 
 .material-symbols-outlined.toucheble:hover {
     cursor: pointer;
     color: #2f0369;
+    transition: transform 0.2s ease;
+    transform: translateY(-3px);
 }
