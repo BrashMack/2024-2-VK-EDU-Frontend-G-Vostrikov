@@ -24,6 +24,7 @@
 }
 
 .burger {
+    position: relative;
     margin-left: 14px;
     padding: 0px 5px;
     display: flex;
@@ -54,6 +55,28 @@
     transform: translateY(-8px) rotate(-45deg);
 }
 
+.popup-menu {
+    position: absolute;
+    left: 0%;
+    top:100%;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    display: none;
+    color: #888;
+    box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup-menu .option {
+    padding: 13px;
+}
+
+.popup-menu .option:hover {
+    background-color: #9e63e9;
+    color: #f5f5f5;
+    border: 1px solid #f5f5f5;
+    border-radius: 5px;
+}
+
 .app {
     margin-left: 20px;
 }
@@ -75,6 +98,11 @@
     padding: 15px;
     border-bottom: 1px solid #d4d4d4;
     cursor: pointer;
+}
+
+.chat-item:hover {
+    background-color: #e5d2ffd3;
+    border-radius: 7px;
 }
 
 .chat-item:last-child {
@@ -154,7 +182,12 @@
     transform: translateY(-5px);
 }
 
-.create-chat svg {
-    width: 24px;
-    height: 24px;
+.icon {
+    padding: 5px;;
+    font-size: 25px;
+    color: #f5f5f5;
+}
+
+.icon:hover {
+    color: #2f0369;
 }
