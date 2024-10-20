@@ -4,7 +4,13 @@ import './chats.js';
 const burger = document.querySelector('.burger');
 const lines = document.querySelectorAll('.burger-line');
 const popupMenu = document.querySelector('.popup-menu');
+const createChats = document.querySelector('.create-chats');
+const chatMenu = document.querySelector('.newchat-menu');
+const cancelBtn = document.querySelector('.nocreate-chat');
+const applyBtn = document.querySelector('.create-chat');
 const chatList = document.querySelector('.chat-list');
+const name = document.querySelector('#chat-name');
+const url = document.querySelector('#chat-avatar');
 
 document.addEventListener('DOMContentLoaded', function loadChats() {
     let chats = [];
@@ -68,8 +74,12 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
             case 'unread':
                 lastStatus = document.createElement('span');
                 lastStatus.classList.add(status[0]);
-                lastStatus.textContent = status[1]
-                timeBlock.appendChild(lastStatus);
+                lastStatus.textContent = status[1];
+                break;
+            default:
+                lastStatus = document.createElement('i');
+                lastStatus.classList.add('material-symbols-outlined', 'checked');
+                lastStatus.textContent = '';
                 break;
         }
         timeBlock.appendChild(lastStatus);
@@ -95,13 +105,54 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
         }
     });
 
-    const createChatButton = document.querySelector('.create-chat');
-
-    createChatButton?.addEventListener('mouseenter', () => {
-    createChatButton.style.transform = 'translateY(-5px)';
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.newchat-menu') && !event.target.closest('.create-chats') && chatMenu?.style.display === 'block') {
+            chatMenu.style.display = 'none';
+            name.value = '';
+            url.value = '';
+        }
     });
 
-    createChatButton?.addEventListener('mouseleave', () => {
-    createChatButton.style.transform = 'translateY(0)';
+    createChats?.addEventListener('click', function toggleMenu() {
+        chatMenu.style.display = 'block';
+    });
+
+    cancelBtn?.addEventListener('click', () => {
+        const name = document.querySelector('#chat-name');
+        const url = document.querySelector('#chat-avatar');
+        name.value = '';
+        url.value = '';
+        chatMenu.style.display = 'none';
+    });
+
+    applyBtn?.addEventListener('click', handleChatCreate);
+    
+    function handleChatCreate() {
+        if (name.value !== '') {
+            if (url.value === '') {
+                url.value = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
+            }
+            chats.push({ user: name.value, avatar: url.value, message: 'нет сообщений', time: '', status: 'no' });
+            localStorage.setItem(`chat${localStorage.length + 1}`, JSON.stringify(chats[chats.length - 1]));
+            addChat(name.value, url.value, 'нет сообщений', '', 'no');
+        }
+        else if (chatMenu?.style.display === 'block') {
+            alert('Название чата не может быть пустым');
+        }
+        name.value = '';
+        url.value = '';
+        chatMenu.style.display = 'none';
+    };
+
+    name?.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            handleChatCreate();
+        }
+    });
+
+    url?.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            handleChatCreate();
+        }
     });
 });
