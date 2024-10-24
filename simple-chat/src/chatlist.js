@@ -1,6 +1,7 @@
 import './chatlist.css';
 import './chats.js';
 
+const workflow = document.querySelector('.workflow');
 const burger = document.querySelector('.burger');
 const lines = document.querySelectorAll('.burger-line');
 const popupMenu = document.querySelector('.popup-menu');
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
 
     document.addEventListener('click', (event) => {
         if (!event.target.closest('.newchat-menu') && !event.target.closest('.create-chats') && chatMenu?.style.display === 'block') {
+            workflow.classList.remove('inactive');
             chatMenu.style.display = 'none';
             name.value = '';
             url.value = '';
@@ -114,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
     });
 
     createChats?.addEventListener('click', function toggleMenu() {
+        workflow.classList.add('inactive');
         chatMenu.style.display = 'block';
     });
 
@@ -123,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
         name.value = '';
         url.value = '';
         chatMenu.style.display = 'none';
+        workflow.classList.remove('inactive');
     });
 
     applyBtn?.addEventListener('click', handleChatCreate);
@@ -142,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
         name.value = '';
         url.value = '';
         chatMenu.style.display = 'none';
+        workflow.classList.remove('inactive');
     };
 
     name?.addEventListener('keyup', (event) => {
