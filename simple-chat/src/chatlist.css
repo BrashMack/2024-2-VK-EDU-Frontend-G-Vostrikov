@@ -43,15 +43,15 @@
     transition: transform 0.2s ease;
 }
 
-.burger .burger-line.active:nth-child(1) {
+.burger-line.active:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
 
-.burger .burger-line.active:nth-child(2) {
+.burger-line.active:nth-child(2) {
     opacity: 0;
 }
 
-.burger .burger-line.active:nth-child(3) {
+.burger-line.active:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
@@ -66,15 +66,15 @@
     box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.popup-menu .option {
+.popup-option {
     padding: 13px;
-}
-
-.popup-menu .option:hover {
-    background-color: #9e63e9;
-    color: #f5f5f5;
     border: 1px solid #f5f5f5;
     border-radius: 5px;
+}
+
+.popup-option:hover {
+    background-color: #9e63e9;
+    color: #f5f5f5; 
 }
 
 .app {
