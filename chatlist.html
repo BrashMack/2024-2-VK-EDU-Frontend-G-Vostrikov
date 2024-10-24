@@ -11,46 +11,48 @@
 
 <body style="margin: 0">
     <div class="container">
-        <header class="header">
-            <div class="burger">
-                <div class="burger-line"></div>
-                <div class="burger-line"></div>
-                <div class="burger-line"></div>
-                <div class="popup-menu">
-                    <div class="option">Профиль</div>
-                    <div class="option">Настройки</div>
-                    <div class="option">Выйти</div>
+        <div class="workflow">
+            <header class="header">
+                <div class="burger">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="popup-menu">
+                        <div class="popup-option">Профиль</div>
+                        <div class="popup-option">Настройки</div>
+                        <div class="popup-option">Выйти</div>
+                    </div>
+                </div>
+                <h2 class="app">Messenger</h2>
+                <div class="search">
+                    <i class="material-symbols-outlined toucheble icons" title="Поиск">search</i>
+                </div>
+            </header>
+            <div class="chat-list">
+            </div>
+            <div>
+                <div class="create-chats" title="Создать чат">
+                    <i class="material-symbols-outlined icon-plus">add</i>
                 </div>
             </div>
-            <h2 class="app">Messenger</h2>
-            <div class="search">
-                <i class="material-symbols-outlined toucheble icons" title="Поиск">search</i>
-            </div>
-        </header>
-        <div class="chat-list">
         </div>
-        <div>
-            <div class="create-chats" title="Создать чат">
-                <i class="material-symbols-outlined icon-plus">add</i>
+        <div class="newchat-menu">
+            <div class="chatmenu-header">
+                <h3 class="chatmenu-title">Создать чат</h3>
+                <div class="nocreate-chat">
+                    <i class="material-symbols-outlined chat-menu-btn" title="Отмена">close</i>
+                </div>
             </div>
-            <div class="newchat-menu">
-                <div>
-                    <h3 class="chatmenu-title">Создать чат</h3>
-                </div>
-                <div>
-                    <input type="text" class="chatmenu-lines" id="chat-name" placeholder="Название чата">
-                </div>
-                <div>
-                    <input type="url" class="chatmenu-lines" id="chat-avatar" placeholder="URL заставки чата">
-                </div>
-                <div class="buttons">
-                    <div class="nocreate-chat">
-                        <i class="material-symbols-outlined chat-menu-btn" title="Отмена">close</i>
-                    </div>
-                    <div class="create-chat">
-                        <i class="material-symbols-outlined chat-menu-btn" title="Подтвердить">check</i>
-                    </div>
-                </div>
+            <div>
+                <input type="text" class="chatmenu-lines" id="chat-name" placeholder="Название чата">
+            </div>
+            <div>
+                <input type="url" class="chatmenu-lines" id="chat-avatar" placeholder="URL заставки чата">
+            </div>
+            <div class="create-chat">
+                <button class="chat-menu-btn" title="Подтвердить">
+                    Создать
+                </button>
             </div>
         </div>
     </div>
