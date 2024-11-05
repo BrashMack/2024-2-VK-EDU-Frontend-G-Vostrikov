@@ -11,6 +11,7 @@
 
 .workflow {
     z-index: 1;
+    background-color: #f5f5f5;
 }
 
 .inactive {
@@ -67,7 +68,7 @@
 .popup-menu {
     position: absolute;
     left: 0%;
-    top:100%;
+    top: 100%;
     background-color: #f5f5f5;
     border-radius: 5px;
     display: none;
@@ -83,7 +84,7 @@
 
 .popup-option:hover {
     background-color: #9e63e9;
-    color: #f5f5f5; 
+    color: #f5f5f5;
 }
 
 .app {
@@ -118,7 +119,7 @@
     border-bottom: none;
 }
 
-.chat-item .avatar {
+.avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -190,7 +191,7 @@
 .newchat-menu {
     z-index: 3;
     position: fixed;
-    width:35%;
+    width: 300px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -204,16 +205,16 @@
 .chatmenu-title {
     margin: 5px 5px;
     padding: 0px 5px;
-    width: 85%;
+    width: -webkit-fill-available;
 }
 
-.chatmenu-header{
+.chatmenu-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.chatmenu-lines{
+.chatmenu-lines {
     margin: 5px 5px;
     padding: 0px 5px;
     width: -webkit-fill-available;
@@ -226,11 +227,23 @@
     outline-color: #818181;
 }
 
+#avatar-input {
+    display: none;
+}
+
+.avatar-label {
+    display: inline-block;
+    margin: 5px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .create-chats:hover {
     transform: translateY(-5px);
 }
 
-.nocreate-chat{
+.nocreate-chat {
     display: flex;
     align-items: center;
 }
@@ -248,12 +261,12 @@
     color: #f5f5f5;
 }
 
-.chat-menu-btn{
+.chat-menu-btn {
     color: #9e63e9;
     background-color: #f5f5f5;
-    font-size: 16px;
-    border-radius: 10%;
-    border-color: #ccc;
+    font-size: 18px;
+    border-radius: 30%;
+    border: transparent;
     transition: .1s linear;
     cursor: pointer;
 }
@@ -265,4 +278,9 @@
 
 .icon-plus:hover {
     color: #2f0369;
+}
+
+.warning::placeholder {
+    color: red;
+    opacity: 0.7;
 }

@@ -2,16 +2,21 @@ import './chatlist.css';
 import './chats.js';
 
 const workflow = document.querySelector('.workflow');
+const chatList = document.querySelector('.chat-list');
+
 const burger = document.querySelector('.burger');
 const lines = document.querySelectorAll('.burger-line');
 const popupMenu = document.querySelector('.popup-menu');
+
 const createChats = document.querySelector('.create-chats');
 const chatMenu = document.querySelector('.newchat-menu');
 const cancelBtn = document.querySelector('.nocreate-chat');
 const applyBtn = document.querySelector('.create-chat');
-const chatList = document.querySelector('.chat-list');
 const name = document.querySelector('#chat-name');
-const url = document.querySelector('#chat-avatar');
+const avatarInput = document.querySelector('#avatar-input');
+const avatarPreview = document.querySelector('#avatar-placeholder');
+const baseURL = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
+let avatarURL = null;
 
 document.addEventListener('DOMContentLoaded', function loadChats() {
     let chats = [];
@@ -111,7 +116,10 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
             workflow.classList.remove('inactive');
             chatMenu.style.display = 'none';
             name.value = '';
-            url.value = '';
+            name.placeholder = 'Название чата';
+            name.classList.remove('warning');
+            avatarURL = null;
+            avatarPreview.src = baseURL;
         }
     });
 
@@ -122,40 +130,53 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
 
     cancelBtn?.addEventListener('click', () => {
         const name = document.querySelector('#chat-name');
-        const url = document.querySelector('#chat-avatar');
         name.value = '';
-        url.value = '';
+        name.placeholder = 'Название чата';
+        name.classList.remove('warning');
+        avatarURL = null;
+        avatarPreview.src = baseURL;
         chatMenu.style.display = 'none';
         workflow.classList.remove('inactive');
     });
 
     applyBtn?.addEventListener('click', handleChatCreate);
+
+    avatarInput?.addEventListener('change', handleFiles, false);
+
+    function handleFiles() {
+        const file = this.files[this.files.length - 1];
+        avatarURL = window.URL.createObjectURL(file);
+        avatarPreview.src = avatarURL ? avatarURL : baseURL;
+        avatarPreview.onload = () => {
+            window.URL.revokeObjectURL(this.src);
+        }
+        this.files = null;
+        this.value = '';
+    }
     
     function handleChatCreate() {
         if (name.value !== '') {
-            if (url.value === '') {
-                url.value = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
+            if (!avatarURL) {
+                avatarURL = baseURL;
             }
-            chats.push({ user: name.value, avatar: url.value, message: 'нет сообщений', time: '', status: 'no' });
+            chats.push({ user: name.value, avatar: avatarURL, message: 'нет сообщений', time: '', status: 'no' });
             localStorage.setItem(`chat${localStorage.length + 1}`, JSON.stringify(chats[chats.length - 1]));
-            addChat(name.value, url.value, 'нет сообщений', '', 'no');
+            addChat(name.value, avatarURL, 'нет сообщений', '', 'no');
+            name.value = '';
+            name.placeholder = 'Название чата';
+            name.classList.remove('warning');
+            avatarURL = null;
+            avatarPreview.src = baseURL;
+            chatMenu.style.display = 'none';
+            workflow.classList.remove('inactive');
         }
         else if (chatMenu?.style.display === 'block') {
-            alert('Название чата не может быть пустым');
+            name.placeholder = 'Название чата не может быть пустым';
+            name.classList.add('warning');
         }
-        name.value = '';
-        url.value = '';
-        chatMenu.style.display = 'none';
-        workflow.classList.remove('inactive');
     };
 
     name?.addEventListener('keyup', (event) => {
-        if (event.key === 'Enter') {
-            handleChatCreate();
-        }
-    });
-
-    url?.addEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
             handleChatCreate();
         }
