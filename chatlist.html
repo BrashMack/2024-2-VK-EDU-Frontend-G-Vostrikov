@@ -47,11 +47,15 @@
                 <input type="text" class="chatmenu-lines" id="chat-name" placeholder="Название чата">
             </div>
             <div>
-                <input type="url" class="chatmenu-lines" id="chat-avatar" placeholder="URL заставки чата">
+                <input type="file" id="avatar-input" accept="image/*">
+                <label for="avatar-input" class="avatar-label" title="Аватар чата">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                        id="avatar-placeholder" class="avatar" alt="Аватар чата">
+                </label>
             </div>
             <div class="create-chat">
-                <button class="chat-menu-btn" title="Подтвердить">
-                    Создать
+                <button class="chat-menu-btn material-symbols-outlined toucheble" title="Подтвердить">
+                    check
                 </button>
             </div>
         </div>
