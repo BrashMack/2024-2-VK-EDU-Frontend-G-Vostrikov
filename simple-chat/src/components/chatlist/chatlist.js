@@ -1,24 +1,77 @@
-import './chatlist.css';
 import './chats.js';
+import { switchView } from '../../index.js';
 
-const workflow = document.querySelector('.workflow');
-const chatList = document.querySelector('.chat-list');
+export function renderChatList() {
+    document.querySelector('#root').innerHTML = `
+        <div class="container">
+            <div class="workflow">
+                <header class="header">
+                    <div class="burger">
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                        <div class="popup-menu">
+                            <div class="popup-option">Профиль</div>
+                            <div class="popup-option">Настройки</div>
+                            <div class="popup-option">Выйти</div>
+                        </div>
+                    </div>
+                    <h2 class="app">Messenger</h2>
+                    <div class="search">
+                        <i class="material-symbols-outlined toucheble icons" title="Поиск">search</i>
+                    </div>
+                </header>
+                <div class="chat-list">
+                </div>
+                <div>
+                    <div class="create-chats" title="Создать чат">
+                        <i class="material-symbols-outlined icon-plus">add</i>
+                    </div>
+                </div>
+            </div>
+            <div class="newchat-menu">
+                <div class="chatmenu-header">
+                    <h3 class="chatmenu-title">Создать чат</h3>
+                    <div class="nocreate-chat">
+                        <i class="material-symbols-outlined chat-menu-btn" title="Отмена">close</i>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" class="chatmenu-lines" id="chat-name" placeholder="Название чата">
+                </div>
+                <div>
+                    <input type="file" id="avatar-input" accept="image/*">
+                    <label for="avatar-input" class="avatar-label" title="Аватар чата">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                            id="avatar-placeholder" class="avatar" alt="Аватар чата">
+                    </label>
+                </div>
+                <div class="create-chat">
+                    <button class="chat-menu-btn material-symbols-outlined toucheble" title="Подтвердить">
+                        check
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
 
-const burger = document.querySelector('.burger');
-const lines = document.querySelectorAll('.burger-line');
-const popupMenu = document.querySelector('.popup-menu');
+    const workflow = document.querySelector('.workflow');
+    const chatList = document.querySelector('.chat-list');
 
-const createChats = document.querySelector('.create-chats');
-const chatMenu = document.querySelector('.newchat-menu');
-const cancelBtn = document.querySelector('.nocreate-chat');
-const applyBtn = document.querySelector('.create-chat');
-const name = document.querySelector('#chat-name');
-const avatarInput = document.querySelector('#avatar-input');
-const avatarPreview = document.querySelector('#avatar-placeholder');
-const baseURL = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
-let avatarURL = null;
+    const burger = document.querySelector('.burger');
+    const lines = document.querySelectorAll('.burger-line');
+    const popupMenu = document.querySelector('.popup-menu');
 
-document.addEventListener('DOMContentLoaded', function loadChats() {
+    const createChats = document.querySelector('.create-chats');
+    const chatMenu = document.querySelector('.newchat-menu');
+    const cancelBtn = document.querySelector('.nocreate-chat');
+    const applyBtn = document.querySelector('.create-chat');
+    const name = document.querySelector('#chat-name');
+    const avatarInput = document.querySelector('#avatar-input');
+    const avatarPreview = document.querySelector('#avatar-placeholder');
+    const baseURL = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
+    let avatarURL = null;
+
     let chats = [];
     for (let i = 1; i <= localStorage.length; ++i) {
         let chat = JSON.parse(localStorage.getItem(`chat${i}`));
@@ -27,18 +80,22 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
         }
     }
     chats.forEach((chat) => {
-    addChat(chat.user, chat.avatar, chat.message, chat.time, chat.status.split(' '));
+        addChat(chat.user, chat.avatar, chat.message, chat.time, chat.status.split(' '));
     });
-   
+
 
     function addChat(user, avatar, message, time, status) {
         const chatElement = document.createElement('div');
         chatElement.classList.add('chat-item');
         if (user === "Дженнифер") {
-            chatElement.setAttribute('onclick', "window.location.href='index.html'");
+            chatElement.addEventListener('click', () => {
+                switchView('chat');
+            });
         }
         else {
-            chatElement.setAttribute('onclick', 'alert("Этот чат пока не готов(")');
+            chatElement.addEventListener('click', () => {
+                alert("Этот чат пока не готов(")
+            });
         }
 
         const imageSrc = document.createElement('img');
@@ -153,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
         this.files = null;
         this.value = '';
     }
-    
+
     function handleChatCreate() {
         if (name.value !== '') {
             if (!avatarURL) {
@@ -181,4 +238,4 @@ document.addEventListener('DOMContentLoaded', function loadChats() {
             handleChatCreate();
         }
     });
-});
+}
