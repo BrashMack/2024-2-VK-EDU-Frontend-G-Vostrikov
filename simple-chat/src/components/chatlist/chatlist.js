@@ -18,7 +18,6 @@ export function renderChatList() {
                     </div>
                     <h2 class="app">Messenger</h2>
                     <div class="search">
-                        <i class="material-symbols-outlined toucheble icons" title="Поиск">search</i>
                     </div>
                 </header>
                 <div class="chat-list">
@@ -86,6 +85,7 @@ export function renderChatList() {
 
     function addChat(user, avatar, message, time, status) {
         const chatElement = document.createElement('div');
+        const fragment = document.createDocumentFragment();
         chatElement.classList.add('chat-item');
         if (user === "Дженнифер") {
             chatElement.addEventListener('click', () => {
@@ -102,7 +102,7 @@ export function renderChatList() {
         imageSrc.classList.add('avatar');
         imageSrc.setAttribute('src', avatar);
         imageSrc.setAttribute('alt', 'Chat_icon');
-        chatElement.appendChild(imageSrc);
+        fragment.appendChild(imageSrc);
 
         const userBlock = document.createElement('div');
         userBlock.classList.add('user-block');
@@ -114,7 +114,7 @@ export function renderChatList() {
         lastMessage.textContent = message;
         userBlock.appendChild(chatName);
         userBlock.appendChild(lastMessage);
-        chatElement.appendChild(userBlock);
+        fragment.appendChild(userBlock);
 
         const timeBlock = document.createElement('div');
         timeBlock.classList.add('time-block');
@@ -146,8 +146,8 @@ export function renderChatList() {
                 break;
         }
         timeBlock.appendChild(lastStatus);
-        chatElement.appendChild(timeBlock);
-
+        fragment.appendChild(timeBlock);
+        chatElement.appendChild(fragment)
         chatList?.appendChild(chatElement);
         if (chatList) {
             chatList.scrollTop = chatList.scrollHeight;

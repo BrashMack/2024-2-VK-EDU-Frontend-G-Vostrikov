@@ -12,8 +12,6 @@ export function renderChat() {
                     <span>в сети</span>
                 </div>
                 <div class="header-right">
-                    <i class="material-symbols-outlined toucheble icons" title="Поиск">search</i>
-                    <i class="material-symbols-outlined toucheble icons" title="Дополнительно">more_vert</i>
                 </div>
             </div>
             <div class="chat-body">
@@ -57,6 +55,7 @@ export function renderChat() {
 
     function addMessage(message, time, isUser, img) {
         const messageElement = document.createElement('div');
+        const fragment = document.createDocumentFragment();
         messageElement.classList.add('chat-message');
         messageElement.classList.add(isUser ? 'user' : 'other');
 
@@ -92,7 +91,8 @@ export function renderChat() {
         messageTime.appendChild(timeSpan);
 
         messageContent.appendChild(messageTime);
-        messageElement.appendChild(messageContent);
+        fragment.appendChild(messageContent);
+        messageElement.appendChild(fragment);
         chatBody?.appendChild(messageElement);
         if (chatBody) {
             chatBody.scrollTop = chatBody.scrollHeight;
