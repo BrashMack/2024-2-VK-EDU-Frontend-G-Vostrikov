@@ -78,25 +78,19 @@ export function renderChatList() {
             chats.push(chat);
         }
     }
-    chats.forEach((chat) => {
-        addChat(chat.user, chat.avatar, chat.message, chat.time, chat.status.split(' '));
-    });
 
+    for (let i = 0; i < chats.length; ++i) {
+        addChat(chats[i].user, chats[i].avatar, chats[i].message, chats[i].time, chats[i].status.split(' '), i+1);
+    }
 
-    function addChat(user, avatar, message, time, status) {
+    function addChat(user, avatar, message, time, status, number) {
         const chatElement = document.createElement('div');
         const fragment = document.createDocumentFragment();
         chatElement.classList.add('chat-item');
-        if (user === "Дженнифер") {
-            chatElement.addEventListener('click', () => {
-                switchView('chat');
-            });
-        }
-        else {
-            chatElement.addEventListener('click', () => {
-                alert("Этот чат пока не готов(")
-            });
-        }
+
+        chatElement.addEventListener('click', () => {
+            switchView(number);
+        });
 
         const imageSrc = document.createElement('img');
         imageSrc.classList.add('avatar');
@@ -141,8 +135,8 @@ export function renderChatList() {
                 break;
             default:
                 lastStatus = document.createElement('i');
-                lastStatus.classList.add('material-symbols-outlined', 'checked');
-                lastStatus.textContent = '';
+                lastStatus.classList.add('material-symbols-outlined', 'u-read');
+                lastStatus.textContent = 'check';
                 break;
         }
         timeBlock.appendChild(lastStatus);
@@ -216,9 +210,9 @@ export function renderChatList() {
             if (!avatarURL) {
                 avatarURL = baseURL;
             }
-            chats.push({ user: name.value, avatar: avatarURL, message: 'нет сообщений', time: '', status: 'no' });
-            localStorage.setItem(`chat${localStorage.length + 1}`, JSON.stringify(chats[chats.length - 1]));
-            addChat(name.value, avatarURL, 'нет сообщений', '', 'no');
+            chats.push({ user: name.value, avatar: avatarURL, message: 'нет сообщений', time: '', status: 'no', online: 'в сети' });
+            localStorage.setItem(`chat${chats.length}`, JSON.stringify(chats[chats.length - 1]));
+            addChat(name.value, avatarURL, 'нет сообщений', '', 'no', chats.length);
             name.value = '';
             name.placeholder = 'Название чата';
             name.classList.remove('warning');

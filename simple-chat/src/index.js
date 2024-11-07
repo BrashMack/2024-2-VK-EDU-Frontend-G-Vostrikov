@@ -14,8 +14,8 @@ function render() {
         case 'chatlist':
             renderChatList();
             break;
-        case 'chat':
-            renderChat();
+        default:
+            renderChat(currentView);
     }
 }
 

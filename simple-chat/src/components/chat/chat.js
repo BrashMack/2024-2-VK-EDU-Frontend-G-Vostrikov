@@ -1,15 +1,18 @@
-import './mocks.js';
+import { mocksRender } from './mocks.js';
 import { switchView } from '../../index.js';
 
-export function renderChat() {
+export function renderChat(number) {
+    const chat = JSON.parse(localStorage.getItem(`chat${number}`));
+    const user = chat.user;
+
     document.querySelector('#root').innerHTML = `
         <div class="chat-container">
             <div class="chat-header">
                 <i class="material-symbols-outlined back toucheble" id="back-to-list" title="Назад">arrow_back_ios_new</i>
-                <img class="avatar" src="https://avatar.iran.liara.run/public/98" alt="Аватар">
+                <img class="avatar" src="${chat.avatar}" alt="Аватар">
                 <div class="user-block">
-                    <h2 class="username">Дженнифер</h2>
-                    <span>в сети</span>
+                    <h2 class="username">${user}</h2>
+                    <span>${chat.online}</span>
                 </div>
                 <div class="header-right">
                 </div>
@@ -32,11 +35,12 @@ export function renderChat() {
         switchView('chatlist');
     });
 
+    mocksRender(user);
+
     const form = document.querySelector('form');
     const input = document.querySelector('.form-input');
     const chatBody = document.querySelector('.chat-body');
     const sendButton = document.querySelector('.submit');
-    let chatId = 1;
     let messages = [];
 
     function hhMM() {
@@ -44,16 +48,16 @@ export function renderChat() {
     }
 
     for (let i = 1; i <= localStorage.length; ++i) {
-        let message = JSON.parse(localStorage.getItem(`message${i}`));
+        let message = JSON.parse(localStorage.getItem(`${user}${i}`));
         if (message) {
             messages.push(message);
         }
     }
     messages.forEach((message) => {
-        addMessage(message.text, message.time, message.isUser, message.img);
+        addMessage(message.text, message.time, message.isUser, message.img, message.status);
     });
 
-    function addMessage(message, time, isUser, img) {
+    function addMessage(message, time, isUser, img, status) {
         const messageElement = document.createElement('div');
         const fragment = document.createDocumentFragment();
         messageElement.classList.add('chat-message');
@@ -80,13 +84,14 @@ export function renderChat() {
         if (isUser) {
             const checkIcon = document.createElement('i');
             checkIcon.classList.add('material-symbols-outlined', 'checked');
-            if (time < hhMM()) {
-                checkIcon.textContent = 'done_all';
-            }
-            else {
-                checkIcon.textContent = 'check';
-            }
+            status === 'sent' ? checkIcon.textContent = 'check' : checkIcon.textContent = 'done_all';
             messageTime.appendChild(checkIcon);
+        }
+        else {
+            if (chat.status.split(' ')[0] === 'unread') {
+                chat.status = 'u_read';
+                localStorage.setItem(`chat${number}`, JSON.stringify(chat));
+            }
         }
         messageTime.appendChild(timeSpan);
 
@@ -106,12 +111,12 @@ export function renderChat() {
         const messageText = input.value.trim();
 
         if (messageText) {
-            messages.push({ text: messageText, time: hhMM(), isUser: true, img: "" });
-            localStorage.setItem(`message${localStorage.length + 1}`, JSON.stringify(messages[messages.length - 1]));
+            messages.push({ text: messageText, time: hhMM(), isUser: true, img: "", status: "sent" });
+            localStorage.setItem(`${user}${messages.length}`, JSON.stringify(messages[messages.length - 1]));
             input.value = '';
-            addMessage(messageText, hhMM(), true, "");
+            addMessage(messageText, hhMM(), true, "", 'sent');
 
-            updateLastMessage(messageText, hhMM());
+            updateLastMessage(messageText, hhMM(), '');
         }
     };
 
@@ -126,10 +131,9 @@ export function renderChat() {
     });
 
     function updateLastMessage(text, time) {
-        const chat = JSON.parse(localStorage.getItem(`chat${chatId}`));
         chat.message = text;
         chat.time = time;
         chat.status = 'sent';
-        localStorage.setItem(`chat${chatId}`, JSON.stringify(chat));
+        localStorage.setItem(`chat${number}`, JSON.stringify(chat));
     }
 }
