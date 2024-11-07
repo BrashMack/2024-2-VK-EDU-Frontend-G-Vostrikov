@@ -51,6 +51,7 @@
 .chat-body {
     height: calc(100vh - 100px);
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 10px;
 }
 
@@ -224,5 +225,18 @@
     100% {
         -moz-box-shadow: 0 0 0 0 #dac0ff;
         box-shadow: 0 0 0 0 #dac0ff;
+    }
+}
+
+.new-popup {
+    animation: slideIn 0.2s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
     }
 }

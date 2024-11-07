@@ -164,7 +164,8 @@ export function renderChatList() {
 
     document.addEventListener('click', (event) => {
         if (!event.target.closest('.newchat-menu') && !event.target.closest('.create-chats') && chatMenu?.style.display === 'block') {
-            workflow.classList.remove('inactive');
+            workflow.classList.toggle('inactive');
+            chatMenu.classList.toggle('modal-popup');
             chatMenu.style.display = 'none';
             name.value = '';
             name.placeholder = 'Название чата';
@@ -175,8 +176,9 @@ export function renderChatList() {
     });
 
     createChats?.addEventListener('click', function toggleMenu() {
-        workflow.classList.add('inactive');
+        workflow.classList.toggle('inactive');
         chatMenu.style.display = 'block';
+        chatMenu.classList.toggle('modal-popup');
     });
 
     cancelBtn?.addEventListener('click', () => {
@@ -186,8 +188,9 @@ export function renderChatList() {
         name.classList.remove('warning');
         avatarURL = null;
         avatarPreview.src = baseURL;
+        chatMenu.classList.toggle('modal-popup');
         chatMenu.style.display = 'none';
-        workflow.classList.remove('inactive');
+        workflow.classList.toggle('inactive');
     });
 
     applyBtn?.addEventListener('click', handleChatCreate);
@@ -218,8 +221,9 @@ export function renderChatList() {
             name.classList.remove('warning');
             avatarURL = null;
             avatarPreview.src = baseURL;
+            chatMenu.classList.toggle('modal-popup');
             chatMenu.style.display = 'none';
-            workflow.classList.remove('inactive');
+            workflow.classList.toggle('inactive');
         }
         else if (chatMenu?.style.display === 'block') {
             name.placeholder = 'Название чата не может быть пустым';

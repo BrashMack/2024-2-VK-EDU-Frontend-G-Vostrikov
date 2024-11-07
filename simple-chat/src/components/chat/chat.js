@@ -54,14 +54,18 @@ export function renderChat(number) {
         }
     }
     for (let i = 0; i < messages.length; ++i) {
-        addMessage(messages[i].text, messages[i].time, messages[i].isUser, messages[i].img, messages[i].status, i+1);
+        addMessage(messages[i].text, messages[i].time, messages[i].isUser, messages[i].img, messages[i].status, i+1, false);
     }
 
-    function addMessage(message, time, isUser, img, status, message_number) {
+    function addMessage(message, time, isUser, img, status, message_number, animate) {
         const messageElement = document.createElement('div');
         const fragment = document.createDocumentFragment();
         messageElement.classList.add('chat-message');
         messageElement.classList.add(isUser ? 'user' : 'other');
+
+        if (animate) {
+            messageElement.classList.add('new-popup');
+        }
 
         const messageContent = document.createElement('div');
         if (!img) {
@@ -102,6 +106,7 @@ export function renderChat(number) {
         messageContent.appendChild(messageTime);
         fragment.appendChild(messageContent);
         messageElement.appendChild(fragment);
+
         chatBody?.appendChild(messageElement);
         if (chatBody) {
             chatBody.scrollTop = chatBody.scrollHeight;
@@ -118,7 +123,7 @@ export function renderChat(number) {
             messages.push({ text: messageText, time: hhMM(), isUser: true, img: "", status: "sent" });
             localStorage.setItem(`${user}${messages.length}`, JSON.stringify(messages[messages.length - 1]));
             input.value = '';
-            addMessage(messageText, hhMM(), true, "", 'sent', messages.length);
+            addMessage(messageText, hhMM(), true, "", 'sent', messages.length, true);
 
             updateLastMessage(messageText, hhMM(), '');
         }
