@@ -70,6 +70,7 @@
     max-width: 80%;
     word-wrap: break-word;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .chat-message.user .message-img {
@@ -188,4 +189,40 @@
     color: #2f0369;
     transition: transform 0.2s ease;
     transform: translateY(-3px);
+}
+
+.new-message {
+    box-shadow: 0 0 0 #dac0ff;
+    animation: pulse 2s;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 #dac0ff;
+    }
+
+    70% {
+        -webkit-box-shadow: 0 0 0 3px #dac0ff;
+    }
+
+    100% {
+        -webkit-box-shadow: 0 0 0 0 #dac0ff;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 #dac0ff;
+        box-shadow: 0 0 0 0 #dac0ff;
+    }
+
+    70% {
+        -moz-box-shadow: 0 0 0 3px #dac0ff;
+        box-shadow: 0 0 0 3px #dac0ff;
+    }
+
+    100% {
+        -moz-box-shadow: 0 0 0 0 #dac0ff;
+        box-shadow: 0 0 0 0 #dac0ff;
+    }
 }

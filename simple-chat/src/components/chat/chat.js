@@ -53,11 +53,11 @@ export function renderChat(number) {
             messages.push(message);
         }
     }
-    messages.forEach((message) => {
-        addMessage(message.text, message.time, message.isUser, message.img, message.status);
-    });
+    for (let i = 0; i < messages.length; ++i) {
+        addMessage(messages[i].text, messages[i].time, messages[i].isUser, messages[i].img, messages[i].status, i+1);
+    }
 
-    function addMessage(message, time, isUser, img, status) {
+    function addMessage(message, time, isUser, img, status, message_number) {
         const messageElement = document.createElement('div');
         const fragment = document.createDocumentFragment();
         messageElement.classList.add('chat-message');
@@ -88,9 +88,13 @@ export function renderChat(number) {
             messageTime.appendChild(checkIcon);
         }
         else {
-            if (chat.status.split(' ')[0] === 'unread') {
+            if (chat.status.split(' ')[0] === 'unread' || status === 'unread') {
+                messageContent.classList.add('new-message');
                 chat.status = 'u_read';
                 localStorage.setItem(`chat${number}`, JSON.stringify(chat));
+                const statusChange = JSON.parse(localStorage.getItem(`${user}${message_number}`));
+                statusChange.status = '';
+                localStorage.setItem(`${user}${message_number}`, JSON.stringify(statusChange));
             }
         }
         messageTime.appendChild(timeSpan);
@@ -114,7 +118,7 @@ export function renderChat(number) {
             messages.push({ text: messageText, time: hhMM(), isUser: true, img: "", status: "sent" });
             localStorage.setItem(`${user}${messages.length}`, JSON.stringify(messages[messages.length - 1]));
             input.value = '';
-            addMessage(messageText, hhMM(), true, "", 'sent');
+            addMessage(messageText, hhMM(), true, "", 'sent', messages.length);
 
             updateLastMessage(messageText, hhMM(), '');
         }
