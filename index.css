@@ -54,6 +54,7 @@
 .chat-body {
     height: calc(100vh - 100px);
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 10px;
 }
 
@@ -73,6 +74,7 @@
     max-width: 80%;
     word-wrap: break-word;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .chat-message.user .message-img {
@@ -192,6 +194,56 @@
     transition: transform 0.2s ease;
     transform: translateY(-3px);
 }
+
+.new-message {
+    box-shadow: 0 0 0 #dac0ff;
+    animation: pulse 2s;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 #dac0ff;
+    }
+
+    70% {
+        -webkit-box-shadow: 0 0 0 3px #dac0ff;
+    }
+
+    100% {
+        -webkit-box-shadow: 0 0 0 0 #dac0ff;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 #dac0ff;
+        box-shadow: 0 0 0 0 #dac0ff;
+    }
+
+    70% {
+        -moz-box-shadow: 0 0 0 3px #dac0ff;
+        box-shadow: 0 0 0 3px #dac0ff;
+    }
+
+    100% {
+        -moz-box-shadow: 0 0 0 0 #dac0ff;
+        box-shadow: 0 0 0 0 #dac0ff;
+    }
+}
+
+.new-popup {
+    animation: slideIn 0.2s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
 /*!*************************************************************************************!*\
   !*** css ../node_modules/css-loader/dist/cjs.js!./components/chatlist/chatlist.css ***!
   \*************************************************************************************/
@@ -486,6 +538,20 @@
 .u-read {
     opacity: 0;
 }
+
+.modal-popup {
+    animation: fadeInOut 0.3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /*!**************************************************************!*\
   !*** css ../node_modules/css-loader/dist/cjs.js!./index.css ***!
   \**************************************************************/
