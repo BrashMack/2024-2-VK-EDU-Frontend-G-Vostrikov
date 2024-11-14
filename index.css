@@ -292,6 +292,7 @@
     width: 23px;
     height: 23px;
     cursor: pointer;
+    color:#f5f5f5;
 }
 
 .burger-line {
@@ -302,38 +303,57 @@
     transition: transform 0.2s ease;
 }
 
-.burger-line.active:nth-child(1) {
+.burger-line.cross:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
 
-.burger-line.active:nth-child(2) {
+.burger-line.cross:nth-child(2) {
     opacity: 0;
 }
 
-.burger-line.active:nth-child(3) {
+.burger-line.cross:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-.popup-menu {
+.menu {
+    z-index: 3;
     position: absolute;
-    left: 0%;
-    top: 100%;
+    left: 20px;
+    top: 50px;
+    display: grid;
+    margin-block-start: 0.5lh;
     background-color: #f5f5f5;
+    overflow: hidden;
+    line-height: 0;
+    padding-inline-start: 0px;
     border-radius: 5px;
-    display: none;
-    color: #888;
     box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.popup-option {
-    padding: 13px;
-    border: 1px solid #f5f5f5;
+.menu-item {
+    transition: line-height 0.5s, color 0.5s;
+    overflow: hidden;
+    color: transparent;
+}
+
+.menu-link {
+    color: currentColor;
+    text-decoration: none;
+    display: block;
+    padding: 0.5lh 10px;
+    border: 0.08lh solid #f5f5f5;
     border-radius: 5px;
 }
 
-.popup-option:hover {
+.menu-link.menu-link:hover,
+.menu-link.menu-link:focus-visible {
     background-color: #9e63e9;
     color: #f5f5f5;
+}
+
+.menu-item.active {
+    line-height: 1.2;
+    color: #9e63e9;
 }
 
 .app {
