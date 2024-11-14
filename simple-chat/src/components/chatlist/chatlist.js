@@ -38,22 +38,22 @@ export function renderChatList() {
                 <div class="chatmenu-header">
                     <h3 class="chatmenu-title">Создать чат</h3>
                     <div class="nocreate-chat">
-                        <i class="material-symbols-outlined chat-menu-btn" title="Отмена">close</i>
+                        <i class="material-symbols-outlined chat-menu-cancel" title="Отмена">close</i>
                     </div>
                 </div>
-                <div>
+                <div class="chat-menu-blocks">
                     <input type="text" class="chatmenu-lines" id="chat-name" placeholder="Название чата">
                 </div>
-                <div>
+                <div class="chat-menu-blocks">
                     <input type="file" id="avatar-input" accept="image/*">
                     <label for="avatar-input" class="avatar-label" title="Аватар чата">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-                            id="avatar-placeholder" class="avatar" alt="Аватар чата">
+                            id="avatar-placeholder" class="avatar-selected" alt="Аватар чата">
                     </label>
                 </div>
-                <div class="create-chat">
-                    <button class="chat-menu-btn material-symbols-outlined toucheble" title="Подтвердить">
-                        check
+                <div class="chat-menu-blocks">
+                    <button class="chat-menu-apply material-symbols-outlined" title="Подтвердить">
+                        Создать
                     </button>
                 </div>
             </div>
@@ -72,7 +72,7 @@ export function renderChatList() {
     const createChats = document.querySelector('.create-chats');
     const chatMenu = document.querySelector('.newchat-menu');
     const cancelBtn = document.querySelector('.nocreate-chat');
-    const applyBtn = document.querySelector('.create-chat');
+    const applyBtn = document.querySelector('.chat-menu-apply');
     const name = document.querySelector('#chat-name');
     const avatarInput = document.querySelector('#avatar-input');
     const avatarPreview = document.querySelector('#avatar-placeholder');
@@ -175,6 +175,7 @@ export function renderChatList() {
 
     document.addEventListener('click', (event) => {
         if (!event.target.closest('.burger') && burger?.classList.contains('active')) {
+            burger.classList.toggle('active');
             menuItems.forEach((item) => item.classList.toggle('active'));
             lines.forEach((line) => line.classList.toggle('cross'));
         }

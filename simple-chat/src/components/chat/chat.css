@@ -180,7 +180,7 @@
 
 .material-symbols-outlined.attach:hover {
     color: #818181;
-    cursor: pointer;
+    cursor: not-allowed;
     transition: transform 0.2s ease;
     transform: translateY(-3px);
 }
