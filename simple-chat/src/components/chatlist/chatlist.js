@@ -6,16 +6,22 @@ export function renderChatList() {
         <div class="container">
             <div class="workflow">
                 <header class="header">
-                    <div class="burger">
+                    <div class="burger" aria-expanded="false" aria-controls="list">
                         <div class="burger-line"></div>
                         <div class="burger-line"></div>
                         <div class="burger-line"></div>
-                        <div class="popup-menu">
-                            <div class="popup-option">Профиль</div>
-                            <div class="popup-option">Настройки</div>
-                            <div class="popup-option">Выйти</div>
-                        </div>
                     </div>
+                    <ul class="menu" id="list" aria-hidden="true">
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" tabindex="-1">Профиль</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" tabindex="-1">Настройки</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="menu-link" tabindex="-1">Выход</a>
+                        </li>
+                    </ul>
                     <h2 class="app">Messenger</h2>
                     <div class="search">
                     </div>
@@ -59,7 +65,9 @@ export function renderChatList() {
 
     const burger = document.querySelector('.burger');
     const lines = document.querySelectorAll('.burger-line');
-    const popupMenu = document.querySelector('.popup-menu');
+    const menu = document.querySelector('.menu');
+    const menuLinks = document.querySelectorAll('.menu-link');
+    const menuItems = document.querySelectorAll('.menu-item');
 
     const createChats = document.querySelector('.create-chats');
     const chatMenu = document.querySelector('.newchat-menu');
@@ -149,16 +157,26 @@ export function renderChatList() {
     }
 
     burger?.addEventListener('click', function toggleBurger() {
-        lines.forEach((line) => line.classList.toggle('active'));
-        burger.classList.contains('active') ? popupMenu.style.display = 'none' : popupMenu.style.display = 'block';
+        lines.forEach((line) => line.classList.toggle('cross'));
         burger.classList.toggle('active');
+        menuItems.forEach((item) => item.classList.toggle('active'));
+
+        if (burger.classList.contains('active')) {
+            burger.setAttribute('aria-expanded', 'true')
+            menu.setAttribute('aria-hidden', 'false')
+            menuLinks.forEach((link) => link.setAttribute('tabindex', '0'))
+        }
+        else {
+            burger.setAttribute('aria-expanded', 'false')
+            menu.setAttribute('aria-hidden', 'true')
+            menuLinks.forEach((link) => link.setAttribute('tabindex', '-1'))
+        }
     });
 
     document.addEventListener('click', (event) => {
         if (!event.target.closest('.burger') && burger?.classList.contains('active')) {
-            popupMenu.style.display = 'none';
-            burger.classList.toggle('active');
-            lines.forEach((line) => line.classList.toggle('active'));
+            menuItems.forEach((item) => item.classList.toggle('active'));
+            lines.forEach((line) => line.classList.toggle('cross'));
         }
     });
 
