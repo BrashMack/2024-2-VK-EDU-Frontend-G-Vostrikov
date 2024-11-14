@@ -5,7 +5,8 @@ export function renderChat(number) {
     const chat = JSON.parse(localStorage.getItem(`chat${number}`));
     const user = chat.user;
 
-    document.querySelector('#root').innerHTML = `
+    document.querySelector('#root').innerHTML = '';
+    document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div class="chat-container">
             <div class="chat-header">
                 <i class="material-symbols-outlined back toucheble" id="back-to-list" title="Назад">arrow_back_ios_new</i>
@@ -29,7 +30,7 @@ export function renderChat(number) {
                 </div>
             </form>
         </div>
-    `;
+    `);
 
     document.querySelector('#back-to-list').addEventListener('click', () => {
         switchView('chatlist');

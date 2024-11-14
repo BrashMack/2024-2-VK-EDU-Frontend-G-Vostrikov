@@ -2,7 +2,8 @@ import './chats.js';
 import { switchView } from '../../index.js';
 
 export function renderChatList() {
-    document.querySelector('#root').innerHTML = `
+    document.querySelector('#root').innerHTML = '';
+    document.querySelector('#root').insertAdjacentHTML('afterbegin', `
         <div class="container">
             <div class="workflow">
                 <header class="header">
@@ -58,7 +59,7 @@ export function renderChatList() {
                 </div>
             </div>
         </div>
-    `;
+    `);
 
     const workflow = document.querySelector('.workflow');
     const chatList = document.querySelector('.chat-list');
