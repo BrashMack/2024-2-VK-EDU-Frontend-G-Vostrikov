@@ -154,10 +154,6 @@
     margin-bottom: 5px;
 }
 
-#chat-name {
-    text-align: center;
-}
-
 .last-msg {
     margin: 0;
     font-size: 14px;
@@ -230,16 +226,21 @@
 }
 
 .chatmenu-lines {
-    margin: 5px 5px;
+    background-color:#f5f5f5;
+    text-align: center;
+    margin-bottom: 10px;
     padding: 0px 5px;
-    width: -webkit-fill-available;
+    width: 260px;
     height: 27px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: #ccc;
+    outline: none;
 }
 
 .chatmenu-lines:focus {
-    outline-color: #818181;
+    border-color: #818181;
 }
 
 #avatar-input {
@@ -292,6 +293,7 @@
     font-weight: 400;
     border: transparent;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 .chat-menu-cancel {

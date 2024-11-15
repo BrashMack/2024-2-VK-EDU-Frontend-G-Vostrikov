@@ -43,14 +43,14 @@ export function renderChatList() {
                     </div>
                 </div>
                 <div class="chat-menu-blocks">
-                    <input type="text" class="chatmenu-lines" id="chat-name" placeholder="Название чата">
-                </div>
-                <div class="chat-menu-blocks">
                     <input type="file" id="avatar-input" accept="image/*">
                     <label for="avatar-input" class="avatar-label" title="Аватар чата">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
                             id="avatar-placeholder" class="avatar-selected" alt="Аватар чата">
                     </label>
+                </div>
+                <div class="chat-menu-blocks">
+                    <input type="text" class="chatmenu-lines" id="chat-name" placeholder="Название чата">
                 </div>
                 <div class="chat-menu-blocks">
                     <button class="chat-menu-apply material-symbols-outlined" title="Подтвердить">
