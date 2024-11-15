@@ -219,13 +219,16 @@ export function renderChatList() {
 
     function handleFiles() {
         const file = this.files[this.files.length - 1];
-        avatarURL = window.URL.createObjectURL(file);
-        avatarPreview.src = avatarURL ? avatarURL : baseURL;
-        avatarPreview.onload = () => {
-            window.URL.revokeObjectURL(this.src);
-        }
+        const reader = new FileReader();
+        reader.onload = () => loadImage(reader.result);
+        reader.readAsDataURL(file);
         this.files = null;
         this.value = '';
+    }
+
+    function loadImage(base64) {
+        avatarURL = base64;
+        avatarPreview.src = avatarURL ? avatarURL : baseURL;
     }
 
     function handleChatCreate() {
