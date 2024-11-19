@@ -11,6 +11,7 @@
 
 .workflow {
     z-index: 1;
+    background-color: #f5f5f5;
 }
 
 .inactive {
@@ -42,6 +43,7 @@
     width: 23px;
     height: 23px;
     cursor: pointer;
+    color:#f5f5f5;
 }
 
 .burger-line {
@@ -52,38 +54,58 @@
     transition: transform 0.2s ease;
 }
 
-.burger-line.active:nth-child(1) {
+.burger-line.cross:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
 
-.burger-line.active:nth-child(2) {
+.burger-line.cross:nth-child(2) {
     opacity: 0;
 }
 
-.burger-line.active:nth-child(3) {
+.burger-line.cross:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-.popup-menu {
+.menu {
+    z-index: 3;
     position: absolute;
-    left: 0%;
-    top:100%;
+    left: 20px;
+    top: 50px;
+    display: grid;
+    margin-block-start: 0.5lh;
     background-color: #f5f5f5;
+    overflow: hidden;
+    line-height: 0;
+    padding-inline-start: 0px;
     border-radius: 5px;
-    display: none;
-    color: #888;
     box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
-.popup-option {
-    padding: 13px;
-    border: 1px solid #f5f5f5;
+.menu-item {
+    transition: line-height 0.5s, color 0.5s;
+    overflow: hidden;
+    color: transparent;
     border-radius: 5px;
 }
 
-.popup-option:hover {
+.menu-link {
+    color: currentColor;
+    text-decoration: none;
+    display: block;
+    padding: 0.5lh 10px;
+    cursor: not-allowed;
+}
+
+.menu-link:hover,
+.menu-link:focus-visible {
     background-color: #9e63e9;
-    color: #f5f5f5; 
+    color: #f5f5f5;
+}
+
+.menu-item.active {
+    line-height: 1.2;
+    color: #9e63e9;
+    border: 0.08lh solid #f5f5f5;
 }
 
 .app {
@@ -118,7 +140,7 @@
     border-bottom: none;
 }
 
-.chat-item .avatar {
+.avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -153,21 +175,12 @@
 .unread {
     background-color: #9e63e9;
     color: #f5f5f5;
-    border-radius: 50%;
+    border-radius: 40%;
     padding: 5px 10px;
     margin-left: 10px;
+    margin-right: 4px;
     font-size: 12px;
     font-weight: bold;
-}
-
-.delivered {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: #9e63e9;
-    border-radius: 50%;
-    margin-left: 10px;
-    cursor: pointer;
 }
 
 .create-chats {
@@ -190,7 +203,7 @@
 .newchat-menu {
     z-index: 3;
     position: fixed;
-    width:35%;
+    width: 300px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -204,41 +217,65 @@
 .chatmenu-title {
     margin: 5px 5px;
     padding: 0px 5px;
-    width: 85%;
 }
 
-.chatmenu-header{
+.chatmenu-header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    
 }
 
-.chatmenu-lines{
-    margin: 5px 5px;
+.chatmenu-lines {
+    background-color:#f5f5f5;
+    text-align: center;
+    margin-bottom: 10px;
     padding: 0px 5px;
-    width: -webkit-fill-available;
+    width: 260px;
     height: 27px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-color: #ccc;
+    outline: none;
 }
 
 .chatmenu-lines:focus {
-    outline-color: #818181;
+    border-color: #818181;
+}
+
+#avatar-input {
+    display: none;
+}
+
+.chat-menu-blocks {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-label {
+    display: inline-block;
+    margin: 5px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.avatar-selected {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
 }
 
 .create-chats:hover {
     transform: translateY(-5px);
 }
 
-.nocreate-chat{
+.nocreate-chat {
+    position: absolute;
     display: flex;
     align-items: center;
-}
-
-.create-chat {
-    display: flex;
-    justify-content: center;
-    margin-top: 6px;
+    right: 10px;
+    top: 10px;
 }
 
 .icon-plus {
@@ -248,21 +285,56 @@
     color: #f5f5f5;
 }
 
-.chat-menu-btn{
+.chat-menu-apply {
     color: #9e63e9;
-    background-color: #f5f5f5;
-    font-size: 16px;
-    border-radius: 10%;
-    border-color: #ccc;
-    transition: .1s linear;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    border: transparent;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.chat-menu-cancel {
+    color: #ccc;
+    font-size: 18px;
     cursor: pointer;
 }
 
-.chat-menu-btn:hover {
+.chat-menu-cancel:hover {
+    color: #818181;
+}
+
+.chat-menu-apply:hover {
     color: #2f0369;
-    box-shadow: 0 0 0 1px white, 0 0 0 2px #2f0369;
+    box-shadow: 0 0 0 #dac0ff;
+    animation: pulse 2s infinite;
+    color: #2f0369;
 }
 
 .icon-plus:hover {
     color: #2f0369;
+}
+
+.warning::placeholder {
+    color: red;
+    opacity: 0.7;
+}
+
+.u-read {
+    opacity: 0;
+}
+
+.modal-popup {
+    animation: fadeInOut 0.3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

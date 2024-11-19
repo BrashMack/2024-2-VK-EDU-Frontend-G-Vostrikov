@@ -12,7 +12,6 @@ const BUILD_PATH = path.resolve(__dirname, 'build');
 module.exports = {
     context: SRC_PATH,
     entry: {
-        chatlist: './chatlist.js',
         index: './index.js',
     },
     output: {
@@ -62,16 +61,12 @@ module.exports = {
             filename: '[name].css',
         }),
         new HTMLWebpackPlugin({
-            filename: 'chatlist.html',
-            template: './chatlist.html'
-        }),
-        new HTMLWebpackPlugin({
             filename: 'index.html',
             template: './index.html'
         })
     ],
     devServer: {
-        open: 'chatlist.html',
+        open: 'index.html',
         port: 8080,
         static: {
             directory: BUILD_PATH,
