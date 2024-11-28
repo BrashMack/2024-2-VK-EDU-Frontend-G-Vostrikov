@@ -1,0 +1,28 @@
+.chatFooter {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+
+.messageInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    /* Добавим отступ между полем ввода и кнопкой */
+}
+
+.sendButton {
+    padding: 10px 15px;
+    background-color: #9e63e9;
+    /* Фиолетовый цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

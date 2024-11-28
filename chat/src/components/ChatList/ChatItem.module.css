@@ -1,0 +1,66 @@
+.chatItem {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #d4d4d4;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    /* Добавляем плавную анимацию */
+}
+
+.chatItem:hover {
+    background-color: #e5d2ffd3;
+    /* Светло-фиолетовый фон при наведении */
+    border-radius: 7px;
+}
+
+.chatItem:last-child {
+    border-bottom: none;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.chatInfo {
+    flex-grow: 1;
+    /* Занимаем всё доступное пространство */
+}
+
+.chatName {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.lastMessage {
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+}
+
+.chatMeta {
+    display: flex;
+    align-items: center;
+}
+
+.chatTime {
+    font-size: 12px;
+    color: #888;
+    margin-right: 10px;
+    /* Добавляем отступ между временем и количеством непрочитанных */
+}
+
+.unreadCount {
+    background-color: #9e63e9;
+    /* Фиолетовый цвет для количества непрочитанных сообщений */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
