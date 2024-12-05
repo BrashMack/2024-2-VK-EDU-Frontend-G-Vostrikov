@@ -1,27 +1,49 @@
-import React from 'react';
-import styles from './ChatItem.module.css';
+import React from "react";
+import styles from "./ChatItem.module.css";
 
-
-function ChatItem({ chat, onClick }) {
-  // Добавим обработку статуса "unread" с помощью условного рендеринга
-  const unreadCount = chat.status.split(' ')[1] || 0;
-  const hasUnreadMessages = parseInt(unreadCount, 10) > 0; //проверка на число unread сообщений
+export const ChatItem = ({ chat, onClick }) => {
+  const status = chat.status.split(" ");
+  const noStatus = () => {
+    if (
+      status[0] !== "read" &&
+      status[0] !== "sent" &&
+      status[0] !== "unread"
+    ) {
+      return true;
+    }
+    return false;
+  };
 
   return (
-    <div className={styles.chatItem} onClick={onClick}>
-      <img src={chat.avatar} alt={`Avatar for ${chat.user}`} className={styles.avatar} />
-      <div className={styles.chatInfo}>
-        <h3 className={styles.chatName}>{chat.user}</h3>
-        <p className={styles.lastMessage}>{chat.message}</p>
+    <div className={styles["chat-item"]} onClick={onClick}>
+      <img
+        src={chat.avatar}
+        alt={`Avatar for ${chat.user}`}
+        className={styles.avatar}
+      />
+      <div className={styles["user-block"]}>
+        <h3 className={styles["chat-name"]}>{chat.user}</h3>
+        <p className={styles["last-msg"]}>{chat.message}</p>
       </div>
-      <div className={styles.chatMeta}>
-        <p className={styles.chatTime}>{chat.time}</p>
-        {hasUnreadMessages && (
-          <span className={styles.unreadCount}>{unreadCount}</span>
+      <div className={styles["time-block"]}>
+        <span className={styles.time}>{chat.time}</span>
+        {status[0] === "unread" && (
+          <span className={styles.unread}>{status[1]}</span>
+        )}
+        {status[0] === "read" && (
+          <i className={`material-symbols-outlined ${styles.checked}`}>
+            done_all
+          </i>
+        )}
+        {status[0] === "sent" && (
+          <i className={`material-symbols-outlined ${styles.checked}`}>check</i>
+        )}
+        {noStatus() && (
+          <i className={`material-symbols-outlined ${styles["u-read"]}`}>
+            check
+          </i>
         )}
       </div>
     </div>
   );
-}
-
-export default ChatItem;
+};

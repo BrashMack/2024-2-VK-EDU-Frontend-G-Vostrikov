@@ -1,76 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import ChatItem from './ChatItem';
-import NewChatModal from './NewChatModal';
-import { getMockChats } from '../mocks';
-import { useNavigate } from 'react-router-dom';
-import styles from './ChatList.module.css';
+import React, { useState, useEffect } from "react";
+import { ChatItem } from "./ChatItem.jsx";
+import { NewChatModal } from "./NewChatModal.jsx";
+import styles from "./ChatList.module.css";
+import { BurgerMenu } from "./BurgerMenu.jsx";
 
-
-function ChatList({ onViewChange }) {
+export const ChatList = ({ onViewChange }) => {
   const [chats, setChats] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
   useEffect(() => {
-    // Загрузка mock-данных.  В реальном приложении здесь нужно будет получить данные с сервера.
-    const mockChats = getMockChats();
-    setChats(mockChats);
-
-    //  Подписка на изменения в localStorage (опционально, для сохранения состояния между сессиями)
-    //  В реальном приложении это не нужно, если все данные берутся с сервера
-    // const handleStorageChange = () => {
-    //     // ... логика обновления чатов из localStorage
-    // };
-    // window.addEventListener('storage', handleStorageChange);
-    // return () => window.removeEventListener('storage', handleStorageChange);
-
+    setChats(loadLocalChats());
   }, []);
 
+  const loadLocalChats = () => {
+    let storedChats = [];
+    for (let i = 1; i <= localStorage.length; ++i) {
+      let chat = JSON.parse(localStorage.getItem(`chat${i}`));
+      if (chat) {
+        storedChats.push(chat);
+      }
+    }
+    return storedChats;
+  };
 
   const handleChatClick = (chatId) => {
-    onViewChange(chatId); // Передаём ID чата родительскому компоненту
-    navigate(`/chat/${chatId}`); // Переход по маршруту
+    console.log(`page-change - ${chatId}!`);
   };
 
-
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
+  const handleModalToggle = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
+  const handleBurgerToggle = () => {
+    setIsBurgerOpen(!isBurgerOpen);
   };
 
-    // Обработка создания нового чата (данные из модального окна)
   const handleCreateChat = (newChat) => {
-      // Здесь нужно добавить логику сохранения нового чата в localStorage или отправки на сервер.
-      // Для примера, просто добавим новый чат в состояние
-      setChats([...chats, newChat]);
-      setIsModalOpen(false);
+    setChats([...chats, newChat]);
+    localStorage.setItem(`chat${chats.length + 1}`, JSON.stringify(newChat));
+    handleModalToggle();
   };
-
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        {/*  Здесь можно добавить элементы header,  например,  поиск */}
-        <h2 className={styles.appTitle}>Messenger</h2>
-        <button className={styles.addChatButton} onClick={handleModalOpen}>
-          +
-        </button>
-      </header>
-      <div className={styles.chatList}>
-        {chats.map((chat, index) => (
-          <ChatItem
-            key={chat.user}
-            chat={chat}
-            onClick={() => handleChatClick(index + 1)}
-          />
-        ))}
+      <div
+        className={
+          isModalOpen
+            ? `${styles.workflow} ${styles.inactive}`
+            : styles.workflow
+        }
+      >
+        <header className={styles.header}>
+          <BurgerMenu isOpen={isBurgerOpen} onClose={handleBurgerToggle} />
+          <h2 className={styles.app}>Messenger</h2>
+          <div className={styles.search}></div>
+        </header>
+        <div className={styles["chat-list"]}>
+          {chats.map((chat, index) => (
+            <ChatItem
+              key={chat.user}
+              chat={chat}
+              onClick={() => handleChatClick(index + 1)}
+            />
+          ))}
+        </div>
+        <div>
+          <div
+            className={styles["create-chats"]}
+            title="Создать чат"
+            onClick={handleModalToggle}
+          >
+            <i className={`material-symbols-outlined ${styles["icon-plus"]}`}>
+              add
+            </i>
+          </div>
+        </div>
       </div>
-      <NewChatModal isOpen={isModalOpen} onClose={handleModalClose} onCreate={handleCreateChat} />
+      <NewChatModal
+        isOpen={isModalOpen}
+        onClose={handleModalToggle}
+        onCreate={handleCreateChat}
+      />
     </div>
   );
-}
-
-export default ChatList;
+};

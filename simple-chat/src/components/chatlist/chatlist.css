@@ -211,6 +211,7 @@
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 0.3s ease-in-out;
     display: none;
 }
 
@@ -324,10 +325,6 @@
 
 .u-read {
     opacity: 0;
-}
-
-.modal-popup {
-    animation: fadeInOut 0.3s ease-in-out;
 }
 
 @keyframes fadeInOut {

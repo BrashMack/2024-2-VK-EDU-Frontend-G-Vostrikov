@@ -1,0 +1,82 @@
+.container {
+  font-size: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+
+.workflow {
+  z-index: 1;
+  background-color: #f5f5f5;
+}
+
+.inactive {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  height: 40px;
+  background-color: #9e63e9;
+  color: #f5f5f5;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.app {
+  margin-left: 20px;
+  cursor: default;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.chat-list {
+  padding: 20px;
+}
+
+.create-chats {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #9e63e9;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.create-chats:hover {
+  transform: translateY(-5px);
+}
+
+.icon-plus {
+  position: fixed;
+  padding: 5px;
+  font-size: 25px;
+  color: #f5f5f5;
+}
+
+.icon-plus:hover {
+  color: #2f0369;
+}

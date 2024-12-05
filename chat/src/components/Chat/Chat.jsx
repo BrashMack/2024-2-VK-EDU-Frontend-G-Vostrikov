@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { getMockMessages } from '../mocks';
-import ChatHeader from './ChatHeader';
-import ChatBody from './ChatBody';
-import ChatFooter from './ChatFooter';
-import styles from './Chat.module.css';
-
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { getMockMessages } from "../../mocks.js";
+import ChatHeader from "./ChatHeader";
+import ChatBody from "./ChatBody";
+import ChatFooter from "./ChatFooter";
+import styles from "./Chat.module.css";
 
 function Chat({ onViewChange }) {
   const { chatId } = useParams();
@@ -13,20 +12,18 @@ function Chat({ onViewChange }) {
   const [chatData, setChatData] = useState(null);
   const [messages, setMessages] = useState([]);
 
-
   useEffect(() => {
     // Загрузка данных о чате и сообщениях.  В реальном приложении здесь нужно будет получить данные с сервера.
     const mockChats = getMockChats();
-    if (chatId && mockChats[parseInt(chatId) -1]) {
-        setChatData(mockChats[parseInt(chatId) - 1]);
-        setMessages(getMockMessages(mockChats[parseInt(chatId) - 1].user));
+    if (chatId && mockChats[parseInt(chatId) - 1]) {
+      setChatData(mockChats[parseInt(chatId) - 1]);
+      setMessages(getMockMessages(mockChats[parseInt(chatId) - 1].user));
     }
   }, [chatId]);
 
-
   const handleGoBack = () => {
     onViewChange(null); // Передаём null, чтобы вернуться к списку чатов
-    navigate('/'); // Переход на главную страницу
+    navigate("/"); // Переход на главную страницу
   };
 
   const handleSendMessage = (newMessage) => {
