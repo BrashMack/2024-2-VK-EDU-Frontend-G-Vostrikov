@@ -49,9 +49,17 @@ export const Chat = ({ onViewChange, chatId }) => {
   };
 
   const handleSendMessage = (newMessage) => {
-    const messageId = messages.at(-1)[1] + 1;
+    const messageId = messages.length !== 0 ? messages.at(-1)[1] + 1 : 1;
     setMessages([...messages, [newMessage, messageId]]);
     localStorage.setItem(`${user}${messageId}`, JSON.stringify(newMessage));
+    updateChatPreview(newMessage.text, newMessage.time, newMessage.status);
+  };
+
+  const updateChatPreview = (text, time, status) => {
+    localStorage.setItem(
+      `chat${chatId}`,
+      JSON.stringify({ ...chat, message: text, time: time, status: status })
+    );
   };
 
   return (

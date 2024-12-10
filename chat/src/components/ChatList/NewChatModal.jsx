@@ -62,7 +62,7 @@ export const NewChatModal = ({ isOpen, onClose, onCreate }) => {
   };
 
   const handleSubmit = () => {
-    if (user.trim() !== "") {
+    if (user.trim() == "") {
       setNameError(true);
       return;
     }

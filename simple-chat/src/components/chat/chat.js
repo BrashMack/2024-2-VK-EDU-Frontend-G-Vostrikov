@@ -126,7 +126,7 @@ export function renderChat(number) {
             input.value = '';
             addMessage(messageText, hhMM(), true, "", 'sent', messages.length, true);
 
-            updateLastMessage(messageText, hhMM(), '');
+            updateLastMessage(messageText, hhMM());
         }
     };
 
