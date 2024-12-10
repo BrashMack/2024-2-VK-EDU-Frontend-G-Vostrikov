@@ -8,7 +8,7 @@ import "./index.css";
 export const App = () => {
   // динамический basename
   const basename = window.location.pathname.split("/")[1]
-    ? `/${window.location.pathname.split("/")[1]}/`
+    ? `/${window.location.pathname.split("/")[1]}`
     : "/";
 
   useEffect(() => {
