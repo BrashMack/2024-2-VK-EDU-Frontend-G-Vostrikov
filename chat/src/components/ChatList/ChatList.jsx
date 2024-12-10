@@ -25,7 +25,8 @@ export const ChatList = ({ onViewChange }) => {
   };
 
   const handleChatClick = (chatId) => {
-    console.log(`page-change - ${chatId}!`);
+    //console.log(`page-change - ${chatId}!`);
+    onViewChange(chatId);
   };
 
   const handleModalToggle = () => {

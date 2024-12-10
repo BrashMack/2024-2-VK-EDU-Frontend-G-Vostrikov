@@ -130,12 +130,6 @@ export function renderChat(number) {
         }
     };
 
-    input?.addEventListener('keyup', (event) => {
-        if (event.key === 'Enter') {
-            handleSubmit(event);
-        }
-    });
-
     sendButton?.addEventListener('mouseup', (event) => {
         handleSubmit(event);
     });

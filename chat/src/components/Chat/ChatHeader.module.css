@@ -1,48 +1,52 @@
-.chatHeader {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #9e63e9;
-    /* Фиолетовый цвет заголовка */
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1;
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #9e63e9;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
-.backButton {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0;
-    margin-right: 10px;
-    font-size: 18px;
-    /* Увеличим размер кнопки */
+.chat-header .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+.user-block .username {
+  margin: 0;
 }
 
-.userInfo {
-    margin-left: auto;
-    /* Выравнивание информации о пользователе справа */
+.chat-header .header-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
-.userName {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
+.chat-header .header-right .icons {
+  font-size: 25px;
+  margin: 0 10px;
 }
 
-.userStatus {
-    margin: 0;
-    font-size: 14px;
-    color: #ddd;
-    /* Светло-серый цвет для статуса */
+.user-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.back {
+  font-size: 25px;
+  padding: 5px;
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+.toucheble:hover {
+  cursor: pointer;
+  color: #2f0369;
+  transition: transform 0.2s ease;
+  transform: translateY(-3px);
 }

@@ -1,46 +1,66 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { getMockMessages } from "../../mocks.js";
-import ChatHeader from "./ChatHeader";
-import ChatBody from "./ChatBody";
-import ChatFooter from "./ChatFooter";
+import React, { useState, useEffect, createContext, useRef } from "react";
+//import { useParams, useNavigate } from "react-router-dom";
+import { ChatHeader } from "./ChatHeader";
+import { ChatBody } from "./ChatBody";
+import { ChatFooter } from "./ChatFooter";
 import styles from "./Chat.module.css";
 
-function Chat({ onViewChange }) {
-  const { chatId } = useParams();
-  const navigate = useNavigate();
-  const [chatData, setChatData] = useState(null);
+export const UserContext = createContext("undefined");
+
+export const Chat = ({ onViewChange, chatId }) => {
+  //const { chatId } = useParams();
+  //const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
+  const chatBodyRef = useRef(null);
+
+  const chat = JSON.parse(localStorage.getItem(`chat${chatId}`));
+  const user = chat.user;
 
   useEffect(() => {
-    // Загрузка данных о чате и сообщениях.  В реальном приложении здесь нужно будет получить данные с сервера.
-    const mockChats = getMockChats();
-    if (chatId && mockChats[parseInt(chatId) - 1]) {
-      setChatData(mockChats[parseInt(chatId) - 1]);
-      setMessages(getMockMessages(mockChats[parseInt(chatId) - 1].user));
+    setMessages(loadLocalMessages());
+    if (chat.status.split(" ")[0] === "unread") {
+      localStorage.setItem(
+        `chat${chatId}`,
+        JSON.stringify({ ...chat, status: "u_read" })
+      );
     }
   }, [chatId]);
 
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
+  const loadLocalMessages = () => {
+    let storedMessages = [];
+    for (let i = 1; i <= localStorage.length; ++i) {
+      let message = JSON.parse(localStorage.getItem(`${user}${i}`));
+      if (message) {
+        storedMessages.push([message, i]);
+      }
+    }
+    return storedMessages;
+  };
+
   const handleGoBack = () => {
-    onViewChange(null); // Передаём null, чтобы вернуться к списку чатов
-    navigate("/"); // Переход на главную страницу
+    onViewChange(null);
+    //navigate("/"); // Переход на главную страницу
   };
 
   const handleSendMessage = (newMessage) => {
-    //  Здесь нужно добавить логику отправки нового сообщения на сервер
-    //  Для примера, просто добавим сообщение в массив сообщений
-    setMessages([...messages, newMessage]);
+    const messageId = messages.at(-1)[1] + 1;
+    setMessages([...messages, [newMessage, messageId]]);
+    localStorage.setItem(`${user}${messageId}`, JSON.stringify(newMessage));
   };
 
-  if (!chatData) return <div>Загрузка чата...</div>; // Отображение сообщения о загрузке
-
   return (
-    <div className={styles.chatContainer}>
-      <ChatHeader chatData={chatData} onGoBack={handleGoBack} />
-      <ChatBody messages={messages} />
+    <div className={styles["chat-container"]}>
+      <ChatHeader chatData={chat} onGoBack={handleGoBack} />
+      <UserContext.Provider value={user}>
+        <ChatBody messages={messages} chatBodyRef={chatBodyRef} />
+      </UserContext.Provider>
       <ChatFooter onSendMessage={handleSendMessage} />
     </div>
   );
-}
-
-export default Chat;
+};

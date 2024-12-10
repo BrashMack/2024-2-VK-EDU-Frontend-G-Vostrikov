@@ -31,35 +31,40 @@ const initialMessages1 = [
     "time": "10:23",
     "isUser": false,
     "img": "",
-    "status": ""
+    "status": "",
+    "new": false
   },
   {
     "text": "Тебе нравится как я нарисовала?",
     "time": "10:23",
     "isUser": false,
     "img": "",
-    "status": ""
+    "status": "",
+    "new": false
   },
   {
     "text": "",
     "time": "10:23",
     "isUser": false,
     "img": "https://loremflickr.com/320/240/landscape,drawing/all",
-    "status": ""
+    "status": "",
+    "new": false
   },
   {
     "text": "Горжусь тобой! Ты крутая!",
     "time": "10:23",
     "isUser": true,
     "img": "",
-    "status": "read"
+    "status": "read",
+    "new": false
   },
   {
     "text": "Джен, ты молодец!",
     "time": "10:23",
     "isUser": true,
     "img": "",
-    "status": "read"
+    "status": "read",
+    "new": false
   }
 ];
 
@@ -69,21 +74,24 @@ const initialMessages2 = [
     "time": "2:45",
     "isUser": true,
     "img": "",
-    "status": "read"
+    "status": "read",
+    "new": false
   },
   {
     "text": "Привет, ты где?! Тебя начальник обыскался.",
     "time": "8:50",
     "isUser": false,
     "img": "",
-    "status": "unread"
+    "status": "unread",
+    "new": false
   },
   {
     "text": "Ты куда пропал?",
     "time": "15:52",
     "isUser": false,
     "img": "",
-    "status": "unread"
+    "status": "unread",
+    "new": false
   }
 ];
 
@@ -93,7 +101,8 @@ const initialMessages3 = [
     "time": "15:52",
     "isUser": true,
     "img": "",
-    "status": "sent"
+    "status": "sent",
+    "new": false
   }
 ];
 
