@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useRef } from "react";
-//import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ChatHeader } from "./ChatHeader";
 import { ChatBody } from "./ChatBody";
 import { ChatFooter } from "./ChatFooter";
@@ -7,9 +7,9 @@ import styles from "./Chat.module.css";
 
 export const UserContext = createContext("undefined");
 
-export const Chat = ({ onViewChange, chatId }) => {
-  //const { chatId } = useParams();
-  //const navigate = useNavigate();
+export const Chat = () => {
+  const { chatId } = useParams();
+  const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const chatBodyRef = useRef(null);
 
@@ -44,8 +44,7 @@ export const Chat = ({ onViewChange, chatId }) => {
   };
 
   const handleGoBack = () => {
-    onViewChange(null);
-    //navigate("/"); // Переход на главную страницу
+    navigate("/");
   };
 
   const handleSendMessage = (newMessage) => {

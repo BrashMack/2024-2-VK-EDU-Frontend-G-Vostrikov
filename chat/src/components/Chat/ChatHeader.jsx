@@ -6,7 +6,7 @@ export const ChatHeader = ({ chatData, onGoBack }) => {
     <header className={styles["chat-header"]}>
       <i
         className={`material-symbols-outlined ${styles.back} ${styles.toucheble}`}
-        id="back-to-list" // проверить обработчики в simple-chat
+        id="back-to-list"
         title="Назад"
         onClick={onGoBack}
       >

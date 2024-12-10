@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { ChatItem } from "./ChatItem.jsx";
 import { NewChatModal } from "./NewChatModal.jsx";
-import styles from "./ChatList.module.css";
 import { BurgerMenu } from "./BurgerMenu.jsx";
+import { useNavigate } from "react-router-dom";
+import styles from "./ChatList.module.css";
 
-export const ChatList = ({ onViewChange }) => {
+export const ChatList = () => {
   const [chats, setChats] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setChats(loadLocalChats());
@@ -25,8 +27,7 @@ export const ChatList = ({ onViewChange }) => {
   };
 
   const handleChatClick = (chatId) => {
-    //console.log(`page-change - ${chatId}!`);
-    onViewChange(chatId);
+    navigate(`/chat/${chatId}`);
   };
 
   const handleModalToggle = () => {
