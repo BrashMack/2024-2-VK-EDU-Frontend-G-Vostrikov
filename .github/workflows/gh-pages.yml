@@ -9,7 +9,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.18.1
-          cache: 'npm'
       - name: Install npm deps
         working-directory: ./chat
         run: npm i
