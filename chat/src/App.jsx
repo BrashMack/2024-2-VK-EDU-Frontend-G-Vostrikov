@@ -6,11 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 export const App = () => {
-  // динамический basename
-  const basename = window.location.pathname.split("/")[1]
-    ? `/${window.location.pathname.split("/")[1]}`
-    : "/";
-
+  console.log("1 ", window.location.pathname);
+  console.log("1 ", location.pathname);
   useEffect(() => {
     if (localStorage.length === 0) {
       loadMockChats();
@@ -19,7 +16,7 @@ export const App = () => {
   }, []);
 
   return (
-    <Router basename={basename}>
+    <Router basename="/2024-2-VK-EDU-Frontend-G-Vostrikov/">
       <Routes>
         <Route path="/" element={<ChatList />} />
         <Route path="/chat/:chatId" element={<Chat />} />
