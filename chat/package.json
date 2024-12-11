@@ -2,7 +2,7 @@
   "name": "chat",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/BrashMack/2024-2-VK-EDU-Frontend-G-Vostrikov",
+  "homepage": "https://brashmack.github.io/2024-2-VK-EDU-Frontend-G-Vostrikov/",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 export const App = () => {
-  console.log("1 ", window.location.pathname);
-  console.log("1 ", location.pathname);
   useEffect(() => {
     if (localStorage.length === 0) {
       loadMockChats();
