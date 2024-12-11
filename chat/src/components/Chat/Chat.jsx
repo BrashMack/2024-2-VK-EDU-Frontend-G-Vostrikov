@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ChatHeader } from "./ChatHeader";
 import { ChatBody } from "./ChatBody";
 import { ChatFooter } from "./ChatFooter";
-import styles from "./Chat.module.css";
+import styles from "./Chat.module.scss";
 
 export const UserContext = createContext("undefined");
 

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "./Chat";
-import styles from "./MessageItem.module.css";
+import styles from "./MessageItem.module.scss";
 
 export const MessageItem = ({ message, messageId }) => {
   const isUserMessage = message.isUser;

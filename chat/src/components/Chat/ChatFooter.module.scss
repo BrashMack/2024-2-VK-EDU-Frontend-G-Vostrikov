@@ -1,0 +1,54 @@
+$color_1: #9e63e9;
+$color_2: #ccc;
+$color_3: #818181;
+$color_4: #2f0369;
+$background-color_1: white;
+$outline-color_1: #818181;
+
+.chat-footer {
+	padding: 10px;
+	background-color: $background-color_1;
+	position: sticky;
+	bottom: 0;
+	z-index: 2;
+}
+.form {
+	display: flex;
+	align-items: center;
+}
+.form-input {
+	flex: 1;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	&:focus {
+		outline-color: $outline-color_1;
+	}
+}
+.send {
+	padding-top: 3px;
+	margin-left: 5px;
+	margin-right: 3px;
+	color: $color_1;
+	font-size: 40px;
+	font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 200, "opsz" 48;
+}
+.attach {
+	color: $color_2;
+	font-size: 25px;
+	font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 40;
+	&:hover {
+		color: $color_3;
+		cursor: not-allowed;
+		transition: transform 0.2s ease;
+		transform: translateY(-3px);
+	}
+}
+.toucheble {
+	&:hover {
+		cursor: pointer;
+		color: $color_4;
+		transition: transform 0.2s ease;
+		transform: translateY(-3px);
+	}
+}

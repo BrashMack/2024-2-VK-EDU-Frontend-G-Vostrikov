@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ChatItem.module.css";
+import styles from "./ChatItem.module.scss";
 
 export const ChatItem = ({ chat, onClick }) => {
   const status = chat.status.split(" ");

@@ -3,7 +3,6 @@ import { ChatList } from "./components/ChatList/ChatList.jsx";
 import { Chat } from "./components/Chat/Chat.jsx";
 import { loadMockChats, loadMockMessages } from "./mocks.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./index.css";
 
 export const App = () => {
   useEffect(() => {

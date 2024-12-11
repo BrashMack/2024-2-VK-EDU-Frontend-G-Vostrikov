@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import styles from "./BurgerMenu.module.css";
+import styles from "./BurgerMenu.module.scss";
 
 export const BurgerMenu = ({ isOpen, onClose }) => {
   const burgerRef = useRef(null);

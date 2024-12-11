@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ChatHeader.module.css";
+import styles from "./ChatHeader.module.scss";
 
 export const ChatHeader = ({ chatData, onGoBack }) => {
   return (

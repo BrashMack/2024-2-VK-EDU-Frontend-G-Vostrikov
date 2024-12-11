@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./ChatFooter.module.css";
+import styles from "./ChatFooter.module.scss";
 
 export const ChatFooter = ({ onSendMessage }) => {
   const [newMessage, setNewMessage] = useState("");

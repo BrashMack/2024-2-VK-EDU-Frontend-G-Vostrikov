@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ChatBody.module.css";
+import styles from "./ChatBody.module.scss";
 import { MessageItem } from "./MessageItem";
 
 export const ChatBody = ({ messages, chatBodyRef }) => {

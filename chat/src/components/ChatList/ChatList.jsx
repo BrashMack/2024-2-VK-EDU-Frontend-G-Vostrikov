@@ -3,7 +3,7 @@ import { ChatItem } from "./ChatItem.jsx";
 import { NewChatModal } from "./NewChatModal.jsx";
 import { BurgerMenu } from "./BurgerMenu.jsx";
 import { useNavigate } from "react-router-dom";
-import styles from "./ChatList.module.css";
+import styles from "./ChatList.module.scss";
 
 export const ChatList = () => {
   const [chats, setChats] = useState([]);
