@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { UserContext } from "./Chat";
+import { UserContext } from "../../pages/Chat/Chat";
 import styles from "./MessageItem.module.scss";
 
 export const MessageItem = ({ message, messageId }) => {

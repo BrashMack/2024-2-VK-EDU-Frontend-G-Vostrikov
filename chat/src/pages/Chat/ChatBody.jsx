@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ChatBody.module.scss";
-import { MessageItem } from "./MessageItem";
+import { MessageItem } from "../../components/MessageItem/MessageItem.jsx";
 
 export const ChatBody = ({ messages, chatBodyRef }) => {
   return (

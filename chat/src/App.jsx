@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { ChatList } from "./components/ChatList/ChatList.jsx";
-import { Chat } from "./components/Chat/Chat.jsx";
+import { ChatList } from "./pages/ChatList/ChatList.jsx";
+import { Chat } from "./pages/Chat/Chat.jsx";
 import { loadMockChats, loadMockMessages } from "./mocks.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 

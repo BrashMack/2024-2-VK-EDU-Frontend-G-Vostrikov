@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { ChatItem } from "./ChatItem.jsx";
+import { ChatItem } from "../../components/ChatItem/ChatItem.jsx";
 import { NewChatModal } from "./NewChatModal.jsx";
-import { BurgerMenu } from "./BurgerMenu.jsx";
+import { BurgerMenu } from "../../components/Burger/BurgerMenu.jsx";
 import { useNavigate } from "react-router-dom";
 import styles from "./ChatList.module.scss";
 
