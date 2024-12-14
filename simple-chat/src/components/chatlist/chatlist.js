@@ -7,22 +7,24 @@ export function renderChatList() {
         <div class="container">
             <div class="workflow">
                 <header class="header">
-                    <div class="burger" aria-expanded="false" aria-controls="list">
-                        <div class="burger-line"></div>
-                        <div class="burger-line"></div>
-                        <div class="burger-line"></div>
+                    <div>
+                        <div class="burger" aria-expanded="false" aria-controls="list">
+                            <div class="burger-line"></div>
+                            <div class="burger-line"></div>
+                            <div class="burger-line"></div>
+                        </div>
+                        <ul class="menu" id="list" aria-hidden="true">
+                            <li class="menu-item">
+                                <a href="#" class="menu-link" tabindex="-1">Профиль</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#" class="menu-link" tabindex="-1">Настройки</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#" class="menu-link" tabindex="-1">Выход</a>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="menu" id="list" aria-hidden="true">
-                        <li class="menu-item">
-                            <a href="#" class="menu-link" tabindex="-1">Профиль</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#" class="menu-link" tabindex="-1">Настройки</a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="#" class="menu-link" tabindex="-1">Выход</a>
-                        </li>
-                    </ul>
                     <h2 class="app">Messenger</h2>
                     <div class="search">
                     </div>
@@ -185,7 +187,6 @@ export function renderChatList() {
     document.addEventListener('click', (event) => {
         if (!event.target.closest('.newchat-menu') && !event.target.closest('.create-chats') && chatMenu?.style.display === 'block') {
             workflow.classList.toggle('inactive');
-            chatMenu.classList.toggle('modal-popup');
             chatMenu.style.display = 'none';
             name.value = '';
             name.placeholder = 'Название чата';
@@ -198,7 +199,6 @@ export function renderChatList() {
     createChats?.addEventListener('click', function toggleMenu() {
         workflow.classList.toggle('inactive');
         chatMenu.style.display = 'block';
-        chatMenu.classList.toggle('modal-popup');
     });
 
     cancelBtn?.addEventListener('click', () => {
@@ -208,7 +208,6 @@ export function renderChatList() {
         name.classList.remove('warning');
         avatarURL = null;
         avatarPreview.src = baseURL;
-        chatMenu.classList.toggle('modal-popup');
         chatMenu.style.display = 'none';
         workflow.classList.toggle('inactive');
     });
@@ -244,7 +243,6 @@ export function renderChatList() {
             name.classList.remove('warning');
             avatarURL = null;
             avatarPreview.src = baseURL;
-            chatMenu.classList.toggle('modal-popup');
             chatMenu.style.display = 'none';
             workflow.classList.toggle('inactive');
         }

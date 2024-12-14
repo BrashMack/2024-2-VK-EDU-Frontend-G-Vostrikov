@@ -126,15 +126,9 @@ export function renderChat(number) {
             input.value = '';
             addMessage(messageText, hhMM(), true, "", 'sent', messages.length, true);
 
-            updateLastMessage(messageText, hhMM(), '');
+            updateLastMessage(messageText, hhMM());
         }
     };
-
-    input?.addEventListener('keyup', (event) => {
-        if (event.key === 'Enter') {
-            handleSubmit(event);
-        }
-    });
 
     sendButton?.addEventListener('mouseup', (event) => {
         handleSubmit(event);
