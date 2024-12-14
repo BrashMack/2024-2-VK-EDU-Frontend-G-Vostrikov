@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./ChatItem.module.scss";
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
+import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 
 export const ChatItem = ({ chat, onClick }) => {
   const status = chat.status.split(" ");
@@ -31,17 +33,19 @@ export const ChatItem = ({ chat, onClick }) => {
           <span className={styles.unread}>{status[1]}</span>
         )}
         {status[0] === "read" && (
-          <i className={`material-symbols-outlined ${styles.checked}`}>
-            done_all
-          </i>
+          <DoneAllOutlinedIcon 
+            className={styles.checked}
+          />
         )}
         {status[0] === "sent" && (
-          <i className={`material-symbols-outlined ${styles.checked}`}>check</i>
+          <CheckOutlinedIcon 
+            className={styles.checked}
+          />
         )}
         {noStatus() && (
-          <i className={`material-symbols-outlined ${styles["u-read"]}`}>
-            check
-          </i>
+          <CheckOutlinedIcon 
+            className={styles["u-read"]}
+          />
         )}
       </div>
     </div>

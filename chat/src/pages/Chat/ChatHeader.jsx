@@ -1,17 +1,16 @@
 import React from "react";
 import styles from "./ChatHeader.module.scss";
+import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 
 export const ChatHeader = ({ chatData, onGoBack }) => {
   return (
     <header className={styles["chat-header"]}>
-      <i
-        className={`material-symbols-outlined ${styles.back} ${styles.toucheble}`}
+      <ArrowBackIosOutlinedIcon
+        className={`${styles.back} ${styles.toucheble}`}
         id="back-to-list"
         title="Назад"
         onClick={onGoBack}
-      >
-        arrow_back_ios_new
-      </i>
+      />
       <img
         className={styles.avatar}
         src={chatData.avatar}

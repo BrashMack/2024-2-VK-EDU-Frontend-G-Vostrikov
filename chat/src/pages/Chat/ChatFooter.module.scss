@@ -25,18 +25,16 @@ $outline-color_1: #818181;
 		outline-color: $outline-color_1;
 	}
 }
-.send {
+.send.send {
 	padding-top: 3px;
 	margin-left: 5px;
 	margin-right: 3px;
 	color: $color_1;
-	font-size: 40px;
-	font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 200, "opsz" 48;
+	font-size: 30px;
 }
-.attach {
+.attach.attach {
 	color: $color_2;
 	font-size: 25px;
-	font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 40;
 	&:hover {
 		color: $color_3;
 		cursor: not-allowed;

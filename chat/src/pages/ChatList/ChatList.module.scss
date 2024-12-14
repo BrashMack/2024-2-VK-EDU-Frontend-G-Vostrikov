@@ -67,10 +67,10 @@ $background-color_2: #9e63e9;
 		transform: translateY(-5px);
 	}
 }
-.icon-plus {
+.icon-plus.icon-plus {
 	position: fixed;
 	padding: 5px;
-	font-size: 25px;
+	font-size: 30px;
 	color: $color_1;
 	&:hover {
 		color: $color_2;

@@ -116,9 +116,9 @@ $border-color_2: #818181;
 		animation: pulse 2s infinite;
 	}
 }
-.chat-menu-cancel {
+.chat-menu-cancel.chat-menu-cancel {
 	color: $color_2;
-	font-size: 18px;
+	font-size: 17px;
 	cursor: pointer;
 	&:hover {
 		color: $color_3;

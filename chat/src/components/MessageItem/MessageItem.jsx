@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../pages/Chat/Chat";
 import styles from "./MessageItem.module.scss";
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
+import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 
 export const MessageItem = ({ message, messageId }) => {
   const isUserMessage = message.isUser;
@@ -51,19 +53,19 @@ export const MessageItem = ({ message, messageId }) => {
           {message.text}
           <div className={styles["message-time"]}>
             {isUserMessage && message.status === "read" && (
-              <i className={`material-symbols-outlined ${styles.checked}`}>
-                done_all
-              </i>
+              <DoneAllOutlinedIcon 
+                className={styles.checked}
+              />
             )}
             {isUserMessage && message.status === "sent" && (
-              <i className={`material-symbols-outlined ${styles.checked}`}>
-                check
-              </i>
+              <CheckOutlinedIcon 
+                className={styles.checked}
+              />
             )}
             {!isUserMessage && message.status === "unread" && (
-              <i className={`material-symbols-outlined ${styles.checked}`}>
-                check
-              </i>
+              <CheckOutlinedIcon 
+                className={styles.checked}
+              />
             )}
             <span>{message.time}</span>
           </div>

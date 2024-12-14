@@ -4,6 +4,7 @@ import { NewChatModal } from "./NewChatModal.jsx";
 import { BurgerMenu } from "../../components/Burger/BurgerMenu.jsx";
 import { useNavigate } from "react-router-dom";
 import styles from "./ChatList.module.scss";
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 export const ChatList = () => {
   const [chats, setChats] = useState([]);
@@ -73,9 +74,9 @@ export const ChatList = () => {
             title="Создать чат"
             onClick={handleModalToggle}
           >
-            <i className={`material-symbols-outlined ${styles["icon-plus"]}`}>
-              add
-            </i>
+            <AddOutlinedIcon 
+              className={styles["icon-plus"]}
+            />
           </div>
         </div>
       </div>

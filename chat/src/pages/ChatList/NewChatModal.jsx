@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./NewChatModal.module.scss";
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const placeholder =
   "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png";
@@ -84,13 +85,11 @@ export const NewChatModal = ({ isOpen, onClose, onCreate }) => {
       <div className={styles["chatmenu-header"]}>
         <h3 className={styles["chatmenu-title"]}>Создать чат</h3>
         <div className={styles["nocreate-chat"]}>
-          <i
-            className={`material-symbols-outlined ${styles["chat-menu-cancel"]}`}
+          <CloseOutlinedIcon
+            className={styles["chat-menu-cancel"]}
             title="Отмена"
             onClick={handleClose}
-          >
-            close
-          </i>
+          />
         </div>
       </div>
       <div className={styles["chat-menu-blocks"]}>

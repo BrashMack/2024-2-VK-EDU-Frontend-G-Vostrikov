@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ChatFooter.module.scss";
+import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
+import SendIcon from '@mui/icons-material/Send';
 
 export const ChatFooter = ({ onSendMessage }) => {
   const [newMessage, setNewMessage] = useState("");
@@ -38,20 +40,16 @@ export const ChatFooter = ({ onSendMessage }) => {
           value={newMessage}
           onChange={handleInputChange}
         />
-        <i
-          className={`material-symbols-outlined ${styles.attach}`}
+        <AttachFileOutlinedIcon
+          className={`${styles.attach}`}
           title="Прикрепить файл"
-        >
-          attach_file
-        </i>
+        />
         <div className={styles.submit}>
-          <i
-            className={`material-symbols-outlined ${styles.send} ${styles.toucheble}`}
+          <SendIcon
+            className={`${styles.send} ${styles.toucheble}`}
             title="Отправить"
             onClick={handleSubmit}
-          >
-            send
-          </i>
+          />
         </div>
       </form>
     </footer>
