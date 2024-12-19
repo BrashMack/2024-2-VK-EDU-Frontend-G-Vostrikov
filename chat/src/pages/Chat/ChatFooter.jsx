@@ -42,7 +42,7 @@ export const ChatFooter = ({ onSendMessage }) => {
         />
         <AttachFileOutlinedIcon
           className={`${styles.attach}`}
-          title="Прикрепить файл"
+          title="Прикрепить изображение"
         />
         <div className={styles.submit}>
           <SendIcon

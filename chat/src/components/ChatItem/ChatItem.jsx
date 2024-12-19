@@ -5,16 +5,7 @@ import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 
 export const ChatItem = ({ chat, onClick }) => {
   const status = chat.status.split(" ");
-  const noStatus = () => {
-    if (
-      status[0] !== "read" &&
-      status[0] !== "sent" &&
-      status[0] !== "unread"
-    ) {
-      return true;
-    }
-    return false;
-  };
+  const noStatus = () => !['read', 'sent', 'unread'].includes(status[0]);
 
   return (
     <div className={styles["chat-item"]} onClick={onClick}>

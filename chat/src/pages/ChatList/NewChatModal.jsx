@@ -39,6 +39,7 @@ export const NewChatModal = ({ isOpen, onClose, onCreate }) => {
   const handleAvatarChange = (e) => {
     const file = e.target.files[e.target.files.length - 1];
     if (file) {
+      console.log(file);
       const reader = new FileReader();
       reader.onloadend = () => setAvatar(reader.result);
       reader.readAsDataURL(file);
@@ -131,7 +132,7 @@ export const NewChatModal = ({ isOpen, onClose, onCreate }) => {
       </div>
       <div className={styles["chat-menu-blocks"]}>
         <button
-          className={`material-symbols-outlined ${styles["chat-menu-apply"]}`}
+          className={styles["chat-menu-apply"]}
           title="Подтвердить"
           onClick={handleSubmit}
         >

@@ -36,7 +36,7 @@ export const MessageItem = ({ message, messageId }) => {
           <img
             src={message.img}
             alt="Отправленное изображение"
-            className={styles.img}
+            className={styles.image}
           />
           <div className={styles["message-time"]}>
             <span>{message.time}</span>

@@ -37,7 +37,7 @@ $outline-color_1: #818181;
 	font-size: 25px;
 	&:hover {
 		color: $color_3;
-		cursor: not-allowed;
+		cursor: pointer;
 		transition: transform 0.2s ease;
 		transform: translateY(-3px);
 	}

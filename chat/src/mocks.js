@@ -46,7 +46,7 @@ const initialMessages1 = [
     "text": "",
     "time": "10:23",
     "isUser": false,
-    "img": "https://loremflickr.com/320/240/landscape,drawing/all",
+    "img": "../mock_image.jpg",
     "status": "",
     "new": false
   },
