@@ -79,7 +79,7 @@ $background-color_3: #bb8cfdd3;
 		padding: 4px;
 		border-radius: 10px;
 		max-width: 95%;
-		word-wrap: break-word;
+		overflow-wrap: break-word;
 		margin-left: 10px;
 		background-color: $background-color_2;
 		cursor: pointer;
@@ -90,6 +90,16 @@ $background-color_3: #bb8cfdd3;
 }
 .image {
 	border-radius: 3px;
+	max-width: 100%;
+  	height: auto;
+}
+.message-caption {
+	margin: 0px 6px;
+	margin-bottom: 6px;
+}
+.message-text {
+	white-space: normal;
+	overflow-wrap: break-word;
 }
 .checked.checked {
 	color: $color_3;

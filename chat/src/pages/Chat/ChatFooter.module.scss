@@ -32,7 +32,11 @@ $outline-color_1: #818181;
 	color: $color_1;
 	font-size: 30px;
 }
+.attach-label {
+	display: inline-block;
+}
 .attach.attach {
+	margin-top: 3px;
 	color: $color_2;
 	font-size: 25px;
 	&:hover {

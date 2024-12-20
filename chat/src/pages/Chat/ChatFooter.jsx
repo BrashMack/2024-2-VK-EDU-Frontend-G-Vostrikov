@@ -3,7 +3,7 @@ import styles from "./ChatFooter.module.scss";
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import SendIcon from '@mui/icons-material/Send';
 
-export const ChatFooter = ({ onSendMessage }) => {
+export const ChatFooter = ({ onSendMessage, onAttach }) => {
   const [newMessage, setNewMessage] = useState("");
 
   const handleInputChange = (e) => {
@@ -40,10 +40,21 @@ export const ChatFooter = ({ onSendMessage }) => {
           value={newMessage}
           onChange={handleInputChange}
         />
-        <AttachFileOutlinedIcon
-          className={`${styles.attach}`}
-          title="Прикрепить изображение"
+        <input
+          type="file"
+          id="attach-icon"
+          accept="image/*"
+          onChange={onAttach}
         />
+        <label
+          htmlFor="attach-icon"
+          className={styles["attach-label"]}
+        >
+          <AttachFileOutlinedIcon
+            className={`${styles.attach}`}
+            title="Прикрепить изображение"
+          />
+        </label>
         <div className={styles.submit}>
           <SendIcon
             className={`${styles.send} ${styles.toucheble}`}

@@ -39,7 +39,6 @@ export const NewChatModal = ({ isOpen, onClose, onCreate }) => {
   const handleAvatarChange = (e) => {
     const file = e.target.files[e.target.files.length - 1];
     if (file) {
-      console.log(file);
       const reader = new FileReader();
       reader.onloadend = () => setAvatar(reader.result);
       reader.readAsDataURL(file);

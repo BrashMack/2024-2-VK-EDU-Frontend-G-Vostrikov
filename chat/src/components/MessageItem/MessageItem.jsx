@@ -3,6 +3,7 @@ import { UserContext } from "../../pages/Chat/Chat";
 import styles from "./MessageItem.module.scss";
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
+import { Padding } from "@mui/icons-material";
 
 export const MessageItem = ({ message, messageId }) => {
   const isUserMessage = message.isUser;
@@ -31,26 +32,22 @@ export const MessageItem = ({ message, messageId }) => {
           : `${styles["chat-message"]} ${messageClasses}`
       }
     >
-      {message.img ? (
-        <div className={styles["message-img"]}>
+      <div
+        className={
+          message.status === "unread"
+            ? `${message.img ? styles["message-img"] : styles["message-content"]} ${styles["new-message"]}`
+            : message.img ? styles["message-img"] : styles["message-content"]
+        }
+      >
+        {message.img && (
           <img
             src={message.img}
             alt="Отправленное изображение"
             className={styles.image}
           />
-          <div className={styles["message-time"]}>
-            <span>{message.time}</span>
-          </div>
-        </div>
-      ) : (
-        <div
-          className={
-            message.status === "unread"
-              ? `${styles["message-content"]} ${styles["new-message"]}`
-              : styles["message-content"]
-          }
-        >
-          {message.text}
+        )}
+        <div className={message.img && styles["message-caption"]}>
+          <span className={message.img && styles["message-text"]}>{message.text}</span>
           <div className={styles["message-time"]}>
             {isUserMessage && message.status === "read" && (
               <DoneAllOutlinedIcon 
@@ -70,7 +67,7 @@ export const MessageItem = ({ message, messageId }) => {
             <span>{message.time}</span>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
