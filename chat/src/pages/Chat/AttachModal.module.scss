@@ -44,7 +44,6 @@ $border-color_2: #818181;
 .newchat-menu {
 	z-index: 3;
 	position: fixed;
-	width: 300px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -53,6 +52,18 @@ $border-color_2: #818181;
 	border-radius: 5px;
 	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 	animation: fadeInOut 0.3s ease-in-out;
+}
+@media screen and (max-width: 700px) {
+	.newchat-menu {
+		min-width: 10vw;
+		max-width: 65vw;
+	}
+}
+@media screen and (min-width: 701px) {
+	.newchat-menu {
+		min-width: 10vw;
+		max-width: 30vw;
+	}
 }
 .chatmenu-title {
 	margin: 5px 5px;
@@ -67,7 +78,7 @@ $border-color_2: #818181;
 	text-align: center;
 	margin-bottom: 10px;
 	padding: 0px 5px;
-	width: 260px;
+	width: 80%;
 	height: 27px;
 	border-top: none;
 	border-right: none;
@@ -83,16 +94,14 @@ $border-color_2: #818181;
 	justify-content: center;
 }
 .avatar-label {
-	display: inline-block;
-	margin: 5px;
-	background-color: $background-color_1;
-	border-radius: 3px;
-	cursor: pointer;
+	display: contents;
 }
 .avatar-selected {
-	width: 250px;
-	height: 250px;
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
 	border-radius: 3px;
+	cursor: pointer;
 }
 .nocreate-chat {
 	position: absolute;
