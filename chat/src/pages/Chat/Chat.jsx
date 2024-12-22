@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useRef } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ChatHeader } from "./ChatHeader";
 import { ChatBody } from "./ChatBody";
@@ -14,7 +14,6 @@ export const Chat = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [image, setImage] = useState("");
-  const chatBodyRef = useRef(null);
 
   const chat = JSON.parse(localStorage.getItem(`chat${chatId}`));
   const user = chat.user;
@@ -28,12 +27,6 @@ export const Chat = () => {
       );
     }
   }, [chatId]);
-
-  useEffect(() => {
-    if (chatBodyRef.current) {
-      chatBodyRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
 
   const loadLocalMessages = () => {
     let storedMessages = [];
@@ -92,7 +85,7 @@ export const Chat = () => {
       >
         <ChatHeader chatData={chat} onGoBack={handleGoBack} />
         <UserContext.Provider value={user}>
-          <ChatBody messages={messages} chatBodyRef={chatBodyRef} />
+          <ChatBody messages={messages} />
         </UserContext.Provider>
         <ChatFooter onSendMessage={handleSendMessage} onAttach={handleModalToggle} />
       </div>
