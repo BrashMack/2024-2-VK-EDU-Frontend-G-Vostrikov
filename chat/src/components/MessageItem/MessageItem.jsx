@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { UserContext } from "../../pages/Chat/Chat";
 import styles from "./MessageItem.module.scss";
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
@@ -9,6 +9,7 @@ export const MessageItem = ({ message, messageId }) => {
   const isUserMessage = message.isUser;
   const messageClasses = isUserMessage ? styles.user : styles.other;
   const user = useContext(UserContext);
+  const captionRef = useRef(null);
 
   useEffect(() => {
     if (!isUserMessage && message.status === "unread") {
@@ -23,6 +24,12 @@ export const MessageItem = ({ message, messageId }) => {
       );
     }
   }, []);
+
+  const imageWidth = (e) => {
+    if (captionRef.current) {
+      captionRef.current.style.maxWidth = `${e.target.offsetWidth}px`
+    }
+  };
 
   return (
     <div
@@ -44,10 +51,11 @@ export const MessageItem = ({ message, messageId }) => {
             src={message.img}
             alt="Отправленное изображение"
             className={styles.image}
+            onLoad={imageWidth}
           />
         )}
-        <div className={message.img && styles["message-caption"]}>
-          <span className={message.img && styles["message-text"]}>{message.text}</span>
+        <div ref={captionRef} className={message.img && styles["message-caption"]}>
+          <span>{message.text}</span>
           <div className={styles["message-time"]}>
             {isUserMessage && message.status === "read" && (
               <DoneAllOutlinedIcon 

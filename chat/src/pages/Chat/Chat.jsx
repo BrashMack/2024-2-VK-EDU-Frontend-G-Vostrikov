@@ -13,7 +13,7 @@ export const Chat = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   const chatBodyRef = useRef(null);
 
   const chat = JSON.parse(localStorage.getItem(`chat${chatId}`));
@@ -75,6 +75,9 @@ export const Chat = () => {
         e.target.files = null;
         e.target.value = "";
       }
+    }
+    else {
+      setImage("");
     }
     setIsModalOpen(!isModalOpen);
   };

@@ -8,7 +8,7 @@ export const AttachModal = ({ isOpen, imageChosen, onClose, onSend }) => {
 
   useEffect(() => {
     setImage(imageChosen);
-  }, [imageChosen]); // проблема
+  }, [imageChosen]);
 
   const handleChange = (e) => {
     setCaption(e.target.value);
@@ -26,7 +26,6 @@ export const AttachModal = ({ isOpen, imageChosen, onClose, onSend }) => {
   const resetModal = () => {
     setCaption("");
     setImage("");
-    imageChosen = null; // спорно
   };
 
   const handleClose = () => {
