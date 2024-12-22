@@ -1,0 +1,20 @@
+$font-family_1: Helvetica, Arial, sans-serif;
+$background-color_1: #f5f5f5;
+
+.chat-container {
+	font-size: 15px;
+	font-family: $font-family_1;
+	font-weight: 400;
+	line-height: 20px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: $background-color_1;
+}
+.workflow {
+	z-index: 1;
+}
+.inactive {
+	opacity: 0.7;
+	pointer-events: none;
+}
