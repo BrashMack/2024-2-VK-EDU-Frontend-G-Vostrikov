@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Translator } from "./pages/Translator/Translator.jsx";
 import { History } from "./pages/History/History.jsx";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 export const App = () => {
   useEffect(() => {
@@ -12,7 +12,7 @@ export const App = () => {
   }, []);
 
   return (
-    <Router basename="/2024-2-VK-EDU-Frontend-G-Vostrikov/">
+    <Router>
       <Routes>
         <Route path="/" element={<Translator />} />
         <Route path="/history" element={<History />} />

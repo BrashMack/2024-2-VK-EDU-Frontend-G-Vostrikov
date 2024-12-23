@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+//import { Select } from "react-select";
 import styles from "./Translator.module.scss";
 import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
 import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
