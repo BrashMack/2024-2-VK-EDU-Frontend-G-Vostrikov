@@ -16,12 +16,10 @@ export const History = () => {
         <ArrowBackIosOutlinedIcon
           className={`${styles.back} ${styles.toucheble}`}
           id="back-to-list"
-          title="Назад"
           onClick={handleGoBack}
+          title="Назад"
         />
-        <div className={styles["user-block"]}>
-          <h2 className={styles["username"]}>История</h2>
-        </div>
+        <h2 className={styles["username"]}>История</h2>
         <div className={styles["header-right"]}>
           <button
             className={styles["chat-menu-apply"]}

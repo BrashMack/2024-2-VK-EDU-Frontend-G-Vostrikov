@@ -44,7 +44,9 @@ $background-color_2: #0b6de4;
 
 }
 .chat-list {
-	padding: 20px;
+	padding: 10px;
+	height: 40vh;
+	width: 40vw;
 }
 .create-chats {
 	position: fixed;
@@ -83,30 +85,18 @@ $background-color_2: #0b6de4;
 		color: $color_2;
 	}
 }
-.chat-menu-apply {
-  background-color:$color_1;
-	color: $background-color_2;
-	border-radius: 5px;
-	font-size: 20px;
-	font-family: $font-family_1;
-	font-weight: 400;
-	border: transparent;
-	cursor: pointer;
-	&:hover {
-		color: $color_2;
+
+@media screen and (max-width: 700px) {
+	.chat-menu-apply {
+		width: 40%;
+		font-size: 20px;
+		color: $background-color_2;
 	}
 }
-.chat-menu-apply2 {
-	margin: 0px 57.344px;
-  background-color:$color_1;
-	color: $background-color_2;
-	border-radius: 5px;
-	font-size: 20px;
-	font-family: $font-family_1;
-	font-weight: 400;
-	border: transparent;
-	cursor: pointer;
-	&:hover {
-		color: $color_2;
+@media screen and (min-width: 701px) {
+	.chat-menu-apply {
+		width: 20%;
+		font-size: 20px;
+		color: $background-color_2;
 	}
 }
