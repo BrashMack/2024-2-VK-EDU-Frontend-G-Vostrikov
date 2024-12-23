@@ -1,0 +1,68 @@
+$color_1: white;
+$color_2: #000cad;
+$background-color_1: #0b6de4;
+$font-family_1: Helvetica, Arial, sans-serif;
+
+.chat-header {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	background-color: $background-color_1;
+	color: $color_1;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	.avatar {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-right: 10px;
+		margin-left: 10px;
+		cursor: pointer;
+	}
+	.header-right {
+		display: flex;
+		align-items: center;
+		margin-left: auto;
+		.icons {
+			font-size: 25px;
+			margin: 0 10px;
+		}
+	}
+}
+.user-block {
+	.username {
+		margin: 0;
+	}
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+}
+.back {
+	font-size: 25px;
+	padding: 5px;
+	margin-right: 5px;
+	margin-left: 10px;
+}
+.toucheble {
+	&:hover {
+		cursor: pointer;
+		color: $color_2;
+		transition: transform 0.2s ease;
+		transform: translateY(-3px);
+	}
+}
+.chat-menu-apply {
+  background-color:$background-color_1;
+	color: $color_1;
+	border-radius: 5px;
+	font-size: 20px;
+	font-family: $font-family_1;
+	font-weight: 400;
+	border: transparent;
+	cursor: pointer;
+	&:hover {
+		color: $color_2
+	}
+}
+

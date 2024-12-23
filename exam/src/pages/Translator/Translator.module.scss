@@ -1,0 +1,111 @@
+$color_1: #f5f5f5;
+$color_2: #000cad;
+$font-family_1: Helvetica, Arial, sans-serif;
+$background-color_1: #f5f5f5;
+$background-color_2: #0b6de4;
+
+.container {
+	font-size: 15px;
+	font-family: $font-family_1;
+	font-weight: 400;
+	line-height: 20px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: $background-color_1;
+}
+.header {
+	display: flex;
+	justify-content:space-around;
+	padding: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	height: 40px;
+	background-color: $background-color_2;
+	color: $color_1;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+}
+.app {
+	margin-left: 20px;
+	cursor: default;
+}
+.search {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	margin-right: 10px;
+}
+.translatorTextBlock{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+}
+.chat-list {
+	padding: 20px;
+}
+.create-chats {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 50px;
+	height: 50px;
+	background-color: $background-color_2;
+	border-radius: 50%;
+	border: none;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform 0.2s ease;
+	&:hover {
+		transform: translateY(-5px);
+	}
+}
+.icon-plus.icon-plus {
+	position: fixed;
+	padding: 5px;
+	font-size: 30px;
+	color: $color_1;
+	&:hover {
+		color: $color_2;
+	}
+}
+.swap.swap {
+	padding: 5px;
+	font-size: 30px;
+	color: $color_1;
+	&:hover {
+		color: $color_2;
+	}
+}
+.chat-menu-apply {
+  background-color:$color_1;
+	color: $background-color_2;
+	border-radius: 5px;
+	font-size: 20px;
+	font-family: $font-family_1;
+	font-weight: 400;
+	border: transparent;
+	cursor: pointer;
+	&:hover {
+		color: $color_2;
+	}
+}
+.chat-menu-apply2 {
+	margin: 0px 57.344px;
+  background-color:$color_1;
+	color: $background-color_2;
+	border-radius: 5px;
+	font-size: 20px;
+	font-family: $font-family_1;
+	font-weight: 400;
+	border: transparent;
+	cursor: pointer;
+	&:hover {
+		color: $color_2;
+	}
+}
