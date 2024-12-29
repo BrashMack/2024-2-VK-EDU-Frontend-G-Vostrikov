@@ -46,7 +46,9 @@ $background-color_2: #0b6de4;
 .chat-list {
 	padding: 10px;
 	height: 40vh;
-	width: 40vw;
+	width: 100%;
+	resize: none;
+	font-size: 25px;
 }
 .create-chats {
 	position: fixed;
