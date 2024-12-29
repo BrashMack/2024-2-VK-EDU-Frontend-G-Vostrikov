@@ -43,7 +43,7 @@ export const History = () => {
           </button>
         </div>
       </header>
-      <div>
+      <div className={styles.historyBody}>
         {translations.map((translation, index) => (
         <HistoryItem
           key={translations.length - 1 - index}

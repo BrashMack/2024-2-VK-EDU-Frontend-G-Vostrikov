@@ -8,14 +8,14 @@ export const HistoryItem = ({ translation }) => {
     <div className={`${styles["chat-message"]} ${styles.other}`}>
       <div className={styles["message-content"]}>
         <div className={styles.langLine}>
-          <div className={styles.langOrig}>
+          <div className={styles.language}>
             <span>{translation.originLang}</span>
           </div>
           <ArrowRightAltOutlinedIcon
             className={styles.arrow}
             title="Переведено на этот язык"
           />
-          <div className={styles.langFinal}>
+          <div className={styles.language}>
             <span>{translation.finalLang}</span>
           </div>
         </div>

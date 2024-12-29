@@ -1,9 +1,10 @@
 $color_1: white;
-$color_2: #5d5d5d;
+$color_2: #747474;
 $color_3: #2f0369;
 $background-color_1: #c398ff;
-$background-color_2: #e0e0e0;
+$background-color_2: #e8edff;
 $background-color_3: #bb8cfdd3;
+$font-family_1: Helvetica, Arial, sans-serif;
 
 @-webkit-keyframes pulse {
 	0% {
@@ -39,6 +40,7 @@ $background-color_3: #bb8cfdd3;
 	}
 }
 .chat-message {
+  font-family: $font-family_1;
 	display: flex;
 	align-items: center;
 	padding: 15px;
@@ -59,6 +61,19 @@ $background-color_3: #bb8cfdd3;
 .langLine {
   display: flex;
   flex-direction: row;
+  margin-bottom: 15px;
+}
+.language {
+  align-self: center;
+}
+.arrow {
+  margin: 0px 10px;
+}
+.textOrig {
+  margin-bottom: 7px;
+}
+.textFinal {
+  color: $color_2
 }
 .image {
 	object-fit: cover;

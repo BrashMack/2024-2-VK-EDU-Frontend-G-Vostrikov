@@ -12,14 +12,7 @@ $font-family_1: Helvetica, Arial, sans-serif;
 	position: sticky;
 	top: 0;
 	z-index: 2;
-	.avatar {
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		margin-right: 10px;
-		margin-left: 10px;
-		cursor: pointer;
-	}
+	height: 40px;
 	.header-right {
 		display: flex;
 		align-items: center;
@@ -61,5 +54,13 @@ $font-family_1: Helvetica, Arial, sans-serif;
 	&:hover {
 		color: $color_2
 	}
+}
+
+.historyBody {
+	box-sizing: border-box;
+	height: calc(100vh - 54px);
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 10px;
 }
 

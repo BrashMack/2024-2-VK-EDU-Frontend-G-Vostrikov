@@ -16,6 +16,42 @@ const translations = [
     "finalLang": "Deutsch",
     "originText": "Ты говоришь по немецки?",
     "finalText": "Sprichst du Deutsch?",
+  },
+  {
+    "originLang": "Russian",
+    "finalLang": "English",
+    "originText": "Привет мир!",
+    "finalText": "Hello world!",
+  },
+  {
+    "originLang": "English",
+    "finalLang": "Russian",
+    "originText": "What is your name?",
+    "finalText": "Как тебя зовут?",
+  },
+  {
+    "originLang": "Russian",
+    "finalLang": "Deutsch",
+    "originText": "Ты говоришь по немецки?",
+    "finalText": "Sprichst du Deutsch?",
+  },
+  {
+    "originLang": "Russian",
+    "finalLang": "English",
+    "originText": "Привет мир!",
+    "finalText": "Hello world!",
+  },
+  {
+    "originLang": "English",
+    "finalLang": "Russian",
+    "originText": "What is your name?",
+    "finalText": "Как тебя зовут?",
+  },
+  {
+    "originLang": "Russian",
+    "finalLang": "Deutsch",
+    "originText": "Ты говоришь по немецки?",
+    "finalText": "Sprichst du Deutsch?",
   }
 ];
 
