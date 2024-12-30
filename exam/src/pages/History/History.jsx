@@ -25,6 +25,11 @@ export const History = () => {
     });
   }, []);
 
+  const handleClear = () => {
+    setTranslations([]);
+    localStorage.clear();
+  };
+
   return (
     <div className={styles["chat-container"]}>
       <header className={styles["chat-header"]}>
@@ -38,6 +43,7 @@ export const History = () => {
           <button
             className={styles["chat-menu-apply"]}
             title="Очистить историю"
+            onClick={handleClear}
           >
             Очистить историю
           </button>
