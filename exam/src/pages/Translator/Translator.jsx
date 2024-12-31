@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import { languages } from "../../languages.js";
@@ -10,8 +10,9 @@ export const Translator = () => {
   const [options, setOptions] = useState([]);
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
-  const [language1, setLanguage1] = useState(null);
-  const [language2, setLanguage2] = useState(null);
+  const [language1, setLanguage1] = useState(localStorage.getItem("originLang") ? JSON.parse(localStorage.getItem("originLang")) : null);
+  const [language2, setLanguage2] = useState(localStorage.getItem("finalLang") ? JSON.parse(localStorage.getItem("finalLang")) : null);
+  const timerRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,24 +23,58 @@ export const Translator = () => {
     setOptions(parsedOptions)
   }, []);
 
+  const getLanguageName = (code) => {
+    const foundOption = options.find(option => option.value.startsWith(code));
+    return foundOption ? foundOption.label : code;
+  }
+
+  useEffect(() => {
+    if (timerRef.current) {
+        clearTimeout(timerRef.current);
+    }
+
+    if(!text1 || !language1 || !language2){
+        setText2("");
+        return;
+    }
+
+    timerRef.current = setTimeout(() => {
+      const api = `https://api.mymemory.translated.net/get?q=${text1}&langpair=${language1.value}|${language2.value}`;
+      fetch(api).then(response => response.json()).then((data) => {
+        setText2(data.responseData.translatedText);
+        if (language1.label === "Autodetect")
+        localStorage.setItem(`translation${localStorage.length + 1}`, JSON.stringify({
+          "originLang": language1.label === "Autodetect" ? getLanguageName(data.responseData.detectedLanguage) : language1.label,
+          "finalLang": language2.label,
+          "originText": text1,
+          "finalText": data.responseData.translatedText,
+        }));
+      });
+    }, 2000);
+
+    return () => {
+      if (timerRef.current) {
+          clearTimeout(timerRef.current);
+      }
+    };
+  }, [text1, language1, language2]);
+
   const goToHistory = () => {
     navigate("/history");
   };
 
   const handleChange1 = (selectedLanguage) => {
     setLanguage1(selectedLanguage);
+    localStorage.setItem("originLang", JSON.stringify(selectedLanguage));
   };
 
   const handleChange2 = (selectedLanguage) => {
     setLanguage2(selectedLanguage);
+    localStorage.setItem("finalLang", JSON.stringify(selectedLanguage));
   };
 
   const handleText1 = (e) => {
     setText1(e.target.value);
-  };
-
-  const handleText2 = (e) => {
-    setText2(e.target.value);
   };
 
   const handleSwap = () => {
@@ -85,12 +120,13 @@ export const Translator = () => {
           className={styles.originText}
           value={text1}
           onChange={handleText1}
+          autoFocus
           placeholder="Введите исходный текст..."
         />
         <textarea
           className={styles.finalText}
           value={text2}
-          onChange={handleText2}
+          readOnly
           placeholder="Переведённый текст..."
         />
       </div>

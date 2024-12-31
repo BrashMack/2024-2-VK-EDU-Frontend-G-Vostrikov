@@ -1,8 +1,10 @@
 $color_1: #f5f5f5;
 $color_2: #000cad;
+$color_3: #5e5e5e;
 $font-family_1: Helvetica, Arial, sans-serif;
 $background-color_1: #f5f5f5;
 $background-color_2: #0b6de4;
+$background-color_3: white;
 
 .container {
 	font-size: 15px;
@@ -12,7 +14,7 @@ $background-color_2: #0b6de4;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	background-color: $background-color_1;
+	background-color: $background-color_3;
 }
 .header {
 	display: flex;
@@ -46,6 +48,7 @@ $background-color_2: #0b6de4;
 	height: 40vh;
 	width: 100%;
 	resize: none;
+	outline: none;
 	font-size: 20px;
 	font-family: $font-family_1;
 }
@@ -54,8 +57,12 @@ $background-color_2: #0b6de4;
 	height: 40vh;
 	width: 100%;
 	resize: none;
+	outline: none;
 	font-size: 20px;
 	font-family: $font-family_1;
+	color: $color_3;
+	background-color: $background-color_1;
+	cursor: default;
 }
 .historyButton {
 	position: fixed;

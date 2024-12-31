@@ -31,7 +31,7 @@ export const History = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <header className={styles.header}>
         <ArrowBackIosOutlinedIcon
           className={`${styles.back} ${styles.toucheble}`}
