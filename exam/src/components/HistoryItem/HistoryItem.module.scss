@@ -1,45 +1,8 @@
-$color_1: white;
 $color_2: #747474;
-$color_3: #2f0369;
-$background-color_1: #c398ff;
 $background-color_2: #e8edff;
-$background-color_3: #bb8cfdd3;
 $font-family_1: Helvetica, Arial, sans-serif;
 
-@-webkit-keyframes pulse {
-	0% {
-		-webkit-box-shadow: 0 0 0 0 #dac0ff;
-	}
-	70% {
-		-webkit-box-shadow: 0 0 0 3px #dac0ff;
-	}
-	100% {
-		-webkit-box-shadow: 0 0 0 0 #dac0ff;
-	}
-}
-@keyframes pulse {
-	0% {
-		-moz-box-shadow: 0 0 0 0 #dac0ff;
-		box-shadow: 0 0 0 0 #dac0ff;
-	}
-	70% {
-		-moz-box-shadow: 0 0 0 3px #dac0ff;
-		box-shadow: 0 0 0 3px #dac0ff;
-	}
-	100% {
-		-moz-box-shadow: 0 0 0 0 #dac0ff;
-		box-shadow: 0 0 0 0 #dac0ff;
-	}
-}
-@keyframes slideIn {
-	from {
-		transform: translateX(100%);
-	}
-	to {
-		transform: translateX(0);
-	}
-}
-.chat-message {
+.historyBlock {
   font-family: $font-family_1;
 	display: flex;
 	align-items: center;
@@ -54,7 +17,7 @@ $font-family_1: Helvetica, Arial, sans-serif;
 		border-bottom: none;
 	}
 }
-.message-content {
+.historyContent {
   display: flex;
   flex-direction:column;
 }
@@ -74,30 +37,4 @@ $font-family_1: Helvetica, Arial, sans-serif;
 }
 .textFinal {
   color: $color_2
-}
-.image {
-	object-fit: cover;
-	border-radius: 3px;
-	max-width:fit-content;
-  	height: auto;
-}
-.message-caption {
-	box-sizing: border-box;
-	padding: 3px 6px;
-	overflow-wrap: break-word;
-	white-space: pre-wrap;
-}
-
-.checked.checked {
-	color: $color_3;
-	font-size: 16px;
-	align-self: center;
-	margin-left: 1px;
-}
-.new-message {
-	box-shadow: 0 0 0 #dac0ff;
-	animation: pulse 2s;
-}
-.new-popup {
-	animation: slideIn 0.2s ease-in-out;
 }

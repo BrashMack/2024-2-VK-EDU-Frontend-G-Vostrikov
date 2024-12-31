@@ -58,7 +58,7 @@ export const Translator = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <Select
-          className={styles["chat-menu-apply"]}
+          className={styles.selectLanguage}
           value={language1}
           onChange={handleChange1}
           options={options}
@@ -71,10 +71,10 @@ export const Translator = () => {
           onClick={handleSwap}
         />
         <Select
-          className={styles["chat-menu-apply"]}
+          className={styles.selectLanguage}
           value={language2}
           onChange={handleChange2}
-          options={options}
+          options={options.slice(1)}
           title="Конечный язык"
           placeholder="Конечный язык"
           isSearchable
@@ -82,13 +82,13 @@ export const Translator = () => {
       </header>
       <div className={styles.translatorTextBlock}>
         <textarea
-          className={styles["chat-list"]}
+          className={styles.originText}
           value={text1}
           onChange={handleText1}
           placeholder="Введите исходный текст..."
         />
         <textarea
-          className={styles["chat-list"]}
+          className={styles.finalText}
           value={text2}
           onChange={handleText2}
           placeholder="Переведённый текст..."
@@ -97,12 +97,12 @@ export const Translator = () => {
       
       <div>
         <div
-          className={styles["create-chats"]}
+          className={styles.historyButton}
           title="История"
           onClick={goToHistory}
         >
           <HistoryOutlinedIcon 
-            className={styles["icon-plus"]}
+            className={styles.historyIcon}
           />
         </div>
       </div>

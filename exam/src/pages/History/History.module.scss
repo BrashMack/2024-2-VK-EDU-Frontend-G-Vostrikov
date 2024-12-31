@@ -3,7 +3,7 @@ $color_2: #000cad;
 $background-color_1: #0b6de4;
 $font-family_1: Helvetica, Arial, sans-serif;
 
-.chat-header {
+.header {
 	display: flex;
 	align-items: center;
 	padding: 10px;
@@ -13,17 +13,13 @@ $font-family_1: Helvetica, Arial, sans-serif;
 	top: 0;
 	z-index: 2;
 	height: 40px;
-	.header-right {
+	.headerRight {
 		display: flex;
 		align-items: center;
 		margin-left: auto;
-		.icons {
-			font-size: 25px;
-			margin: 0 10px;
-		}
 	}
 }
-.username {
+.nameHeader {
   margin: 0px 15px;
   font-family: $font-family_1;
 }
@@ -41,7 +37,7 @@ $font-family_1: Helvetica, Arial, sans-serif;
 		transform: translateY(-3px);
 	}
 }
-.chat-menu-apply {
+.clearButton {
   background-color:$background-color_1;
 	color: $color_1;
 	border-radius: 5px;

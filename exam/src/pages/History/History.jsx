@@ -31,17 +31,17 @@ export const History = () => {
   };
 
   return (
-    <div className={styles["chat-container"]}>
-      <header className={styles["chat-header"]}>
+    <div>
+      <header className={styles.header}>
         <ArrowBackIosOutlinedIcon
           className={`${styles.back} ${styles.toucheble}`}
           onClick={handleGoBack}
           title="Назад"
         />
-        <h2 className={styles["username"]}>История</h2>
-        <div className={styles["header-right"]}>
+        <h2 className={styles.nameHeader}>История</h2>
+        <div className={styles.headerRight}>
           <button
-            className={styles["chat-menu-apply"]}
+            className={styles.clearButton}
             title="Очистить историю"
             onClick={handleClear}
           >

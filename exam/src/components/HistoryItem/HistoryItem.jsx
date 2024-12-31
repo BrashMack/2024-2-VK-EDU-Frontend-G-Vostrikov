@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React from "react";
 import styles from "./HistoryItem.module.scss";
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
 
 export const HistoryItem = ({ translation }) => {
 
   return (
-    <div className={`${styles["chat-message"]} ${styles.other}`}>
-      <div className={styles["message-content"]}>
+    <div className={styles.historyBlock}>
+      <div className={styles.historyContent}>
         <div className={styles.langLine}>
           <div className={styles.language}>
             <span>{translation.originLang}</span>

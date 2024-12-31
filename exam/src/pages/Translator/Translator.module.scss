@@ -16,7 +16,7 @@ $background-color_2: #0b6de4;
 }
 .header {
 	display: flex;
-	justify-content:space-around;
+	justify-content: space-around;
 	padding: 10px;
 	height: 40px;
 	background-color: $background-color_2;
@@ -41,7 +41,7 @@ $background-color_2: #0b6de4;
 	justify-content: space-around;
 
 }
-.chat-list {
+.originText {
 	padding: 10px;
 	height: 40vh;
 	width: 100%;
@@ -49,7 +49,15 @@ $background-color_2: #0b6de4;
 	font-size: 20px;
 	font-family: $font-family_1;
 }
-.create-chats {
+.finalText {
+	padding: 10px;
+	height: 40vh;
+	width: 100%;
+	resize: none;
+	font-size: 20px;
+	font-family: $font-family_1;
+}
+.historyButton {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
@@ -68,7 +76,7 @@ $background-color_2: #0b6de4;
 		transform: translateY(-5px);
 	}
 }
-.icon-plus.icon-plus {
+.historyIcon.historyIcon {
 	position: fixed;
 	padding: 5px;
 	font-size: 30px;
@@ -88,14 +96,14 @@ $background-color_2: #0b6de4;
 }
 
 @media screen and (max-width: 700px) {
-	.chat-menu-apply {
+	.selectLanguage {
 		width: 40%;
 		font-size: 20px;
 		color: $background-color_2;
 	}
 }
 @media screen and (min-width: 701px) {
-	.chat-menu-apply {
+	.selectLanguage {
 		width: 20%;
 		font-size: 20px;
 		color: $background-color_2;
