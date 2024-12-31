@@ -38,6 +38,8 @@ export const Translator = () => {
         return;
     }
 
+    setText2("");
+
     timerRef.current = setTimeout(() => {
       const api = `https://api.mymemory.translated.net/get?q=${text1}&langpair=${language1.value}|${language2.value}`;
       fetch(api).then(response => response.json()).then((data) => {
