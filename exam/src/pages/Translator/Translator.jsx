@@ -64,12 +64,12 @@ export const Translator = () => {
 
   const handleChange1 = (selectedLanguage) => {
     setLanguage1(selectedLanguage);
-    localStorage.setItem("originLang", JSON.stringify(selectedLanguage));
+    updateLangHistory(true, selectedLanguage);
   };
 
   const handleChange2 = (selectedLanguage) => {
     setLanguage2(selectedLanguage);
-    localStorage.setItem("finalLang", JSON.stringify(selectedLanguage));
+    updateLangHistory(false, selectedLanguage);
   };
 
   const handleText1 = (e) => {
@@ -80,12 +80,21 @@ export const Translator = () => {
     if (language1?.label !== "Autodetect") {
       const tmp = language1;
       setLanguage1(language2)
+      updateLangHistory(true, language2);
       setLanguage2(tmp);
+      updateLangHistory(false, tmp);
     }
     else {
       setLanguage1(language2)
+      updateLangHistory(true, language2);
       setLanguage2(null);
+      updateLangHistory(false, null);
     }
+  };
+
+  const updateLangHistory = (origin, lang) => {
+    origin ? localStorage.setItem("originLang", JSON.stringify(lang))
+    : localStorage.setItem("finalLang", JSON.stringify(lang))
   };
 
   return (
