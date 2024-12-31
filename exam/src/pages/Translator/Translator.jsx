@@ -42,7 +42,6 @@ export const Translator = () => {
       const api = `https://api.mymemory.translated.net/get?q=${text1}&langpair=${language1.value}|${language2.value}`;
       fetch(api).then(response => response.json()).then((data) => {
         setText2(data.responseData.translatedText);
-        if (language1.label === "Autodetect")
         localStorage.setItem(`translation${localStorage.length + 1}`, JSON.stringify({
           "originLang": language1.label === "Autodetect" ? getLanguageName(data.responseData.detectedLanguage) : language1.label,
           "finalLang": language2.label,
