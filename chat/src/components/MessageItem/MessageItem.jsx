@@ -3,7 +3,6 @@ import { UserContext } from "../../pages/Chat/Chat";
 import styles from "./MessageItem.module.scss";
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
-import { Padding } from "@mui/icons-material";
 
 export const MessageItem = ({ message, messageId }) => {
   const isUserMessage = message.isUser;
