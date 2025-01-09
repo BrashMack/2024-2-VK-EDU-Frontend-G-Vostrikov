@@ -48,7 +48,7 @@ export const BurgerMenu = ({ isOpen, onClose }) => {
       </div>
       <ul className={styles.menu} id="list" aria-hidden="true">
         <li className={toggleMenu()}>
-          <a href="#" className={styles["menu-link"]} tabIndex={-1}>
+          <a href="#/profile/0" className={styles["menu-link"]} style={{ cursor: 'pointer' }} tabIndex={-1}>
             Профиль
           </a>
         </li>

@@ -75,6 +75,7 @@ export const NewChatModal = ({ isOpen, onClose, onCreate }) => {
       time: "",
       status: "no",
       online: "в сети",
+      description: ""
     });
   };
 
