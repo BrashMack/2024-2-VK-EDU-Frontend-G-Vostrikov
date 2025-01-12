@@ -1,0 +1,40 @@
+$color_2: #747474;
+$background-color_2: #e8edff;
+$font-family_1: Helvetica, Arial, sans-serif;
+
+.historyBlock {
+  font-family: $font-family_1;
+	display: flex;
+	align-items: center;
+	padding: 15px;
+	border-bottom: 1px solid #d4d4d4;
+	cursor: pointer;
+	&:hover {
+		background-color: $background-color_2;
+		border-radius: 7px;
+	}
+	&:last-child {
+		border-bottom: none;
+	}
+}
+.historyContent {
+  display: flex;
+  flex-direction:column;
+}
+.langLine {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+.language {
+  align-self: center;
+}
+.arrow {
+  margin: 0px 10px;
+}
+.textOrig {
+  margin-bottom: 7px;
+}
+.textFinal {
+  color: $color_2
+}

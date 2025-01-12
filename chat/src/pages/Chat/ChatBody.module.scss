@@ -1,5 +1,6 @@
 .chat-body {
-	height: calc(100vh - 100px);
+	box-sizing: border-box;
+	height: calc(100vh - 117.8px); // высота chat-body за вычетом высоты header и footer
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding: 10px;

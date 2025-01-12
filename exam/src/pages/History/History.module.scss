@@ -1,0 +1,72 @@
+$color_1: white;
+$color_2: #000cad;
+$background-color_1: #0b6de4;
+$background-color_2: white;
+$font-family_1: Helvetica, Arial, sans-serif;
+
+.container {
+	font-family: $font-family_1;
+	font-weight: 400;
+	line-height: 20px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: $background-color_2;
+}
+.header {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	background-color: $background-color_1;
+	color: $color_1;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+	height: 40px;
+	.headerRight {
+		display: flex;
+		align-items: center;
+		margin-left: auto;
+	}
+}
+.nameHeader {
+  margin: 0px 15px;
+  font-family: $font-family_1;
+}
+.back {
+	font-size: 25px;
+	padding: 5px;
+	margin-right: 5px;
+	margin-left: 10px;
+}
+.toucheble {
+	&:hover {
+		cursor: pointer;
+		color: $color_2;
+		transition: transform 0.2s ease;
+		transform: translateY(-3px);
+	}
+}
+.clearButton {
+  background-color:$background-color_1;
+	color: $color_1;
+	border-radius: 5px;
+	font-size: 20px;
+	font-family: $font-family_1;
+	font-weight: 400;
+  margin: 0px 15px;
+	border: transparent;
+	cursor: pointer;
+	&:hover {
+		color: $color_2
+	}
+}
+
+.historyBody {
+	box-sizing: border-box;
+	height: calc(100vh - 60px);
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 10px;
+}
+

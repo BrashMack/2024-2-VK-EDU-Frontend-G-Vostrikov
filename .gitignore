@@ -1,4 +1,5 @@
 node_modules/
+dist/
 hw1/
 simple-chat/build/
 chat/dist/

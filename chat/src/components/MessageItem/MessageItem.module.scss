@@ -60,10 +60,11 @@ $background-color_3: #bb8cfdd3;
 	display: flex;
 	flex-direction: row-reverse;
 	.message-img {
+		display: flex;
+		flex-direction: column;
 		padding: 4px;
 		border-radius: 10px;
 		max-width: 95%;
-		word-wrap: break-word;
 		margin-left: 10px;
 		background-color: $background-color_1;
 		color: $color_1;
@@ -76,10 +77,11 @@ $background-color_3: #bb8cfdd3;
 }
 .chat-message.other {
 	.message-img {
+		display: flex;
+		flex-direction: column;
 		padding: 4px;
 		border-radius: 10px;
 		max-width: 95%;
-		overflow-wrap: break-word;
 		margin-left: 10px;
 		background-color: $background-color_2;
 		cursor: pointer;
@@ -89,18 +91,18 @@ $background-color_3: #bb8cfdd3;
 	}
 }
 .image {
+	object-fit: cover;
 	border-radius: 3px;
-	max-width: 100%;
+	max-width:fit-content;
   	height: auto;
 }
 .message-caption {
-	margin: 0px 6px;
-	margin-bottom: 6px;
-}
-.message-text {
-	white-space: normal;
+	box-sizing: border-box;
+	padding: 3px 6px;
 	overflow-wrap: break-word;
+	white-space: pre-wrap;
 }
+
 .checked.checked {
 	color: $color_3;
 	font-size: 16px;
