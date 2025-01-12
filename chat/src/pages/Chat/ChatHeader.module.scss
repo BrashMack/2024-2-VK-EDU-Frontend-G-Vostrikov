@@ -30,10 +30,14 @@ $background-color_1: #9e63e9;
 	}
 }
 .user-block {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+}
+.data-block {
 	.username {
 		margin: 0;
 	}
-	cursor: pointer;
 	display: flex;
 	flex-direction: column;
 }

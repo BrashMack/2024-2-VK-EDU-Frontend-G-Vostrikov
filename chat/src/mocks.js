@@ -1,3 +1,9 @@
+const currentUser = {
+  "user": "Георгий Востриков",
+  "avatar": "https://avatar.iran.liara.run/public/2",
+  "description": "Студент МГТУ"
+};
+
 const initialChats = [
   {
     "user": "Дженнифер",
@@ -5,7 +11,8 @@ const initialChats = [
     "message": "Джен, ты молодец!",
     "time": "10:23",
     "status": "read",
-    "online": "в сети"
+    "online": "в сети",
+    "description": "Жизнерадостная и общительная"
   },
   {
     "user": "Антон Коллега",
@@ -13,7 +20,8 @@ const initialChats = [
     "message": "Ты куда пропал?",
     "time": "15:52",
     "status": "unread 2",
-    "online": "был 10 мин назад"
+    "online": "был 10 мин назад",
+    "description": "Frontend разработчик"
   },
   {
     "user": "Серёга (должен 2к)",
@@ -21,7 +29,8 @@ const initialChats = [
     "message": "Серёг, где моё бабло?!",
     "time": "15:52",
     "status": "sent",
-    "online": "был недавно"
+    "online": "был недавно",
+    "description": "broke в протёртых штанах"
   }
 ];
 
@@ -46,7 +55,7 @@ const initialMessages1 = [
     "text": "",
     "time": "10:23",
     "isUser": false,
-    "img": "../mock_image.jpg",
+    "img": "../2024-2-VK-EDU-Frontend-G-Vostrikov/mock_image.jpg",
     "status": "",
     "new": false
   },
@@ -105,6 +114,10 @@ const initialMessages3 = [
     "new": false
   }
 ];
+
+export const loadUser = () => {
+  localStorage.setItem(`user`, JSON.stringify(currentUser));
+};
 
 export const loadMockChats = () => {
   let chatNumber = 0;

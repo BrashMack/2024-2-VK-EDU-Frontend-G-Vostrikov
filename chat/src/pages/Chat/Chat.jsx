@@ -43,6 +43,10 @@ export const Chat = () => {
     navigate("/");
   };
 
+  const handleGoProfile = () => {
+    navigate(`/profile/${chatId}`);
+  };
+
   const handleSendMessage = (newMessage) => {
     const messageId = messages.length !== 0 ? messages.at(-1)[1] + 1 : 1;
     setMessages([...messages, [newMessage, messageId]]);
@@ -83,7 +87,7 @@ export const Chat = () => {
             : styles.workflow
         }
       >
-        <ChatHeader chatData={chat} onGoBack={handleGoBack} />
+        <ChatHeader chatData={chat} onGoBack={handleGoBack} onGoProfile={handleGoProfile} />
         <UserContext.Provider value={user}>
           <ChatBody messages={messages} />
         </UserContext.Provider>
