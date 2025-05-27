@@ -42,7 +42,6 @@ export const Chat = () => {
   const handleGoBack = () => {
     navigate("/");
   };
-
   const handleGoProfile = () => {
     navigate(`/profile/${chatId}`);
   };
