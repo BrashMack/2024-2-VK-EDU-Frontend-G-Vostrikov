@@ -1,2 +1,2 @@
-# 2024-2-VK-EDU-Frontend-G-Vostrikov
-VK education project (Frontend)
+# 2023-2-VK-EDU-Frontend-G-Vostrikov
+VK education project
